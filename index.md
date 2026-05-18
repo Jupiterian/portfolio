@@ -104,9 +104,6 @@ Hi! My name is [Your Full Name]
     <a href="{{site.baseurl}}/sprint6-io-api-skills" class="btn" style="background-color: var(--warn);">
        I/O & APIs
     </a>
-    <a href="{{site.baseurl}}/sprint6-game-runner-skills" class="btn" style="background-color: var(--orange);">
-       Game Runner Integration
-    </a>
     <a href="{{site.baseurl}}/sprint6-debugging-testing" class="btn" style="background-color: var(--red);">
        Debugging & Testing
     </a>
