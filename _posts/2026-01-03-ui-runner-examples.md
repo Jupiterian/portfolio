@@ -244,25 +244,27 @@ outputElement.appendChild(button);
 ### Code Structure
 
 Always start your code by clearing the output element:
-```javascript
+{% capture javascript_example_8aaa %}
 outputElement.innerHTML = '';
-```
+{% endcapture %}
+{% include runners/code.html runner_id="javascript-eba577" language="javascript" code=javascript_example_8aaa %}
 
 ### Canvas Setup
 
 For canvas-based lessons:
-```javascript
+{% capture javascript_example_e883 %}
 const canvas = document.createElement('canvas');
 canvas.width = 400;
 canvas.height = 400;
 outputElement.appendChild(canvas);
 const ctx = canvas.getContext('2d');
-```
+{% endcapture %}
+{% include runners/code.html runner_id="javascript-7060b4" language="javascript" code=javascript_example_e883 %}
 
 ### Animation Cleanup
 
 For animations using `requestAnimationFrame`, store the animation ID and clean it up when needed:
-```javascript
+{% capture javascript_example_1536 %}
 let animationId;
 
 function animate() {
@@ -273,7 +275,8 @@ function animate() {
 animate();
 
 // The Stop button will clear the output, stopping the animation
-```
+{% endcapture %}
+{% include runners/code.html runner_id="javascript-41163b" language="javascript" code=javascript_example_1536 %}
 
 ### Memory Management
 

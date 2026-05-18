@@ -57,13 +57,14 @@ Your game code must export two things:
 1. **GameControl**: Your GameControl class (usually imported)
 2. **gameLevelClasses**: Array of game level classes
 
-```javascript
+{% capture javascript_example_e1f3 %}
 import GameControl from '/assets/js/GameEnginev1/essentials/GameControl.js';
 import GameLevelBasic from '/assets/js/GameEnginev1/GameLevelBasic.js';
 
 export const GameControl = GameControl;
 export const gameLevelClasses = [GameLevelBasic];
-```
+{% endcapture %}
+{% include runners/code.html runner_id="javascript-3779a6" language="javascript" code=javascript_example_e1f3 %}
 
 ---
 
@@ -155,19 +156,21 @@ export { GameControl };
 
 Always import necessary GameEngine modules:
 
-```javascript
+{% capture javascript_example_2d44 %}
 import GameControl from '/assets/js/GameEnginev1/essentials/GameControl.js';
 import GameLevelBasic from '/assets/js/GameEnginev1/GameLevelBasic.js';
-```
+{% endcapture %}
+{% include runners/code.html runner_id="javascript-640442" language="javascript" code=javascript_example_2d44 %}
 
 ### Export Requirements
 
 Your code must export:
 
-```javascript
+{% capture javascript_example_e6d7 %}
 export { GameControl };
 export const gameLevelClasses = [GameLevelBasic, GameLevelWater];
-```
+{% endcapture %}
+{% include runners/code.html runner_id="javascript-312584" language="javascript" code=javascript_example_e6d7 %}
 
 ### Level Class Structure
 
@@ -212,21 +215,24 @@ Use the game controls to debug:
 
 **Change Player Start Position:**
 
-```javascript
+{% capture javascript_example_fb80 %}
 INIT_POSITION: { x: 200, y: 300 }
-```
+{% endcapture %}
+{% include runners/code.html runner_id="javascript-66f632" language="javascript" code=javascript_example_fb80 %}
 
 **Adjust Player Speed:**
 
-```javascript
+{% capture javascript_example_185a %}
 STEP_FACTOR: 500  // Faster movement
-```
+{% endcapture %}
+{% include runners/code.html runner_id="javascript-01baa8" language="javascript" code=javascript_example_185a %}
 
 **Different Background:**
 
-```javascript
+{% capture javascript_example_4ff6 %}
 src: path + "/images/gamify/water.png"
-```
+{% endcapture %}
+{% include runners/code.html runner_id="javascript-f76548" language="javascript" code=javascript_example_4ff6 %}
 
 ### Game Development Concepts
 

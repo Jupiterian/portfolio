@@ -22,7 +22,7 @@ const positionX = 150.5;
 const positionY = 200;
 outputElement.innerHTML = "<p>Pos: (" + positionX + ", " + positionY + ")</p>";
 {% endcapture %}
-{% include runners/ui.html runner_id="dt_numbers" challenge=dt_numbers_chal code=dt_numbers_code height="100px" %}
+{% include runners/code.html language="javascript" runner_id="dt_numbers" challenge=dt_numbers_chal code=dt_numbers_code %}
 
 
 ### Strings
@@ -34,7 +34,7 @@ const spriteName = "peppa-pig-boss.png";
 const charName = "Peppa Boss";
 outputElement.innerHTML = "<p>Loaded " + charName + " via " + spriteName + "</p>";
 {% endcapture %}
-{% include runners/ui.html runner_id="dt_strings" challenge=dt_strings_chal code=dt_strings_code height="100px" %}
+{% include runners/code.html language="javascript" runner_id="dt_strings" challenge=dt_strings_chal code=dt_strings_code %}
 
 
 ### Booleans
@@ -46,7 +46,7 @@ const isJumping = false;
 const isVulnerable = true;
 outputElement.innerHTML = "<p>Jumping: " + isJumping + " | Vulnerable: " + isVulnerable + "</p>";
 {% endcapture %}
-{% include runners/ui.html runner_id="dt_booleans" challenge=dt_booleans_chal code=dt_booleans_code height="100px" %}
+{% include runners/code.html language="javascript" runner_id="dt_booleans" challenge=dt_booleans_chal code=dt_booleans_code %}
 
 
 ### Arrays
@@ -57,7 +57,7 @@ We store dynamically generated characters or collections.
 const inventory = ["Health Potion", "Jump Boots", "Coin"];
 outputElement.innerHTML = "<p>Inventory items: " + inventory.length + " (" + inventory[0] + ")</p>";
 {% endcapture %}
-{% include runners/ui.html runner_id="dt_arrays" challenge=dt_arrays_chal code=dt_arrays_code height="100px" %}
+{% include runners/code.html language="javascript" runner_id="dt_arrays" challenge=dt_arrays_chal code=dt_arrays_code %}
 
 
 ### Objects (JSON)
@@ -68,4 +68,4 @@ We format environment and sprite properties mapping keys to values.
 const configBlock = { width: 800, height: 600, background: "blue" };
 outputElement.innerHTML = "<p>Resolution: " + configBlock.width + "x" + configBlock.height + "</p>";
 {% endcapture %}
-{% include runners/ui.html runner_id="dt_objects" challenge=dt_objects_chal code=dt_objects_code height="100px" %}
+{% include runners/code.html language="javascript" runner_id="dt_objects" challenge=dt_objects_chal code=dt_objects_code %}

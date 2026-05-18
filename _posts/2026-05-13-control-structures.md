@@ -26,7 +26,7 @@ for(let i=0; i<levels.length; i++) {
 }
 outputElement.innerHTML += "</ul>";
 {% endcapture %}
-{% include runners/ui.html runner_id="cs_iteration" challenge=cs_iteration_chal code=cs_iteration_code height="150px" %}
+{% include runners/code.html language="javascript" runner_id="cs_iteration" challenge=cs_iteration_chal code=cs_iteration_code %}
 
 
 ### Conditionals
@@ -42,7 +42,7 @@ if (isPaused) {
     outputElement.innerHTML = "<p>Game is Running.</p>";
 }
 {% endcapture %}
-{% include runners/ui.html runner_id="cs_conditionals" challenge=cs_conditionals_chal code=cs_conditionals_code height="100px" %}
+{% include runners/code.html language="javascript" runner_id="cs_conditionals" challenge=cs_conditionals_chal code=cs_conditionals_code %}
 
 
 ### Nested Conditions
@@ -62,4 +62,4 @@ if (collision) {
     }
 }
 {% endcapture %}
-{% include runners/ui.html runner_id="cs_nested_conditions" challenge=cs_nested_conditions_chal code=cs_nested_conditions_code height="150px" %}
+{% include runners/code.html language="javascript" runner_id="cs_nested_conditions" challenge=cs_nested_conditions_chal code=cs_nested_conditions_code %}

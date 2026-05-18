@@ -28,7 +28,7 @@ class GameObject {
 }
 outputElement.innerHTML = "<p>Class <b>GameObject</b> created.</p>";
 {% endcapture %}
-{% include runners/ui.html runner_id="oop_writing_classes" challenge=oop_writing_classes_chal code=oop_writing_classes_code height="100px" %}
+{% include runners/code.html language="javascript" runner_id="oop_writing_classes" challenge=oop_writing_classes_chal code=oop_writing_classes_code %}
 
 
 ### Methods & Parameters
@@ -45,7 +45,7 @@ class PhysicsObject {
 const obj = new PhysicsObject();
 outputElement.innerHTML = "<p>" + obj.applyForce(5, -10) + "</p>";
 {% endcapture %}
-{% include runners/ui.html runner_id="oop_methods_params" challenge=oop_methods_params_chal code=oop_methods_params_code height="120px" %}
+{% include runners/code.html language="javascript" runner_id="oop_methods_params" challenge=oop_methods_params_chal code=oop_methods_params_code %}
 
 
 ### Instantiation & Objects
@@ -63,7 +63,7 @@ const myPlayer = new Player("IshanPig");
 
 outputElement.innerHTML = "<p>Instantiated Player: <b>" + myPlayer.name + "</b></p>";
 {% endcapture %}
-{% include runners/ui.html runner_id="oop_instantiation" challenge=oop_instantiation_chal code=oop_instantiation_code height="100px" %}
+{% include runners/code.html language="javascript" runner_id="oop_instantiation" challenge=oop_instantiation_chal code=oop_instantiation_code %}
 
 
 ### Inheritance (Basic)
@@ -77,7 +77,7 @@ class Boss extends Character {}
 
 outputElement.innerHTML = "<p>Does Boss inherit Character? <b>" + (new Boss() instanceof Character) + "</b></p>";
 {% endcapture %}
-{% include runners/ui.html runner_id="oop_inheritance" challenge=oop_inheritance_chal code=oop_inheritance_code height="100px" %}
+{% include runners/code.html language="javascript" runner_id="oop_inheritance" challenge=oop_inheritance_chal code=oop_inheritance_code %}
 
 
 ### Method Overriding
@@ -95,7 +95,7 @@ class SubClass extends Base {
 const item = new SubClass();
 outputElement.innerHTML = "<p>Result: <b>" + item.update() + "</b></p>";
 {% endcapture %}
-{% include runners/ui.html runner_id="oop_overriding" challenge=oop_overriding_chal code=oop_overriding_code height="150px" %}
+{% include runners/code.html language="javascript" runner_id="oop_overriding" challenge=oop_overriding_chal code=oop_overriding_code %}
 
 
 ### Constructor Chaining
@@ -115,4 +115,4 @@ class Enemy extends Entity {
 const badGuy = new Enemy(100, 25);
 outputElement.innerHTML = "<p>Enemy Health (from parent): " + badGuy.health + ", Damage (from child): " + badGuy.damage + "</p>";
 {% endcapture %}
-{% include runners/ui.html runner_id="oop_constructor_chain" challenge=oop_constructor_chain_chal code=oop_constructor_chain_code height="150px" %}
+{% include runners/code.html language="javascript" runner_id="oop_constructor_chain" challenge=oop_constructor_chain_chal code=oop_constructor_chain_code %}

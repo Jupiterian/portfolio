@@ -22,7 +22,7 @@ const keyPressed = "w";
 const yVelocity = (keyPressed === "w") ? -10 : 0;
 outputElement.innerHTML = "<p>Key [" + keyPressed + "] registered. Jump velocity: " + yVelocity + "</p>";
 {% endcapture %}
-{% include runners/ui.html runner_id="io_keyboard" challenge=io_keyboard_chal code=io_keyboard_code height="100px" %}
+{% include runners/code.html language="javascript" runner_id="io_keyboard" challenge=io_keyboard_chal code=io_keyboard_code %}
 
 
 ### Canvas Rendering
@@ -36,7 +36,7 @@ function drawSprite(x, y) {
 }
 outputElement.innerHTML = "<p>" + drawSprite(100, 450) + "</p>";
 {% endcapture %}
-{% include runners/ui.html runner_id="io_canvas" challenge=io_canvas_chal code=io_canvas_code height="120px" %}
+{% include runners/code.html language="javascript" runner_id="io_canvas" challenge=io_canvas_chal code=io_canvas_code %}
 
 
 ### GameEnv Configuration
@@ -50,7 +50,7 @@ class GameEnv {
 }
 outputElement.innerHTML = "<p>GameEnv configured to bounds: " + GameEnv.innerWidth + "x" + GameEnv.innerHeight + "</p>";
 {% endcapture %}
-{% include runners/ui.html runner_id="io_gameenv" challenge=io_gameenv_chal code=io_gameenv_code height="120px" %}
+{% include runners/code.html language="javascript" runner_id="io_gameenv" challenge=io_gameenv_chal code=io_gameenv_code %}
 
 
 ### API Integration
@@ -61,7 +61,7 @@ Fetching URLs from a designated backend.
 const targetAPI = "https://api.github.com/users/github";
 outputElement.innerHTML = "<p>Preparing to integrate and connect to: <code>" + targetAPI + "</code></p>";
 {% endcapture %}
-{% include runners/ui.html runner_id="io_api_integration" challenge=io_api_integration_chal code=io_api_integration_code height="100px" %}
+{% include runners/code.html language="javascript" runner_id="io_api_integration" challenge=io_api_integration_chal code=io_api_integration_code %}
 
 
 ### Asynchronous I/O
@@ -77,7 +77,7 @@ async function gatherData() {
 }
 gatherData();
 {% endcapture %}
-{% include runners/ui.html runner_id="io_async_io" challenge=io_async_io_chal code=io_async_io_code height="120px" %}
+{% include runners/code.html language="javascript" runner_id="io_async_io" challenge=io_async_io_chal code=io_async_io_code %}
 
 
 ### JSON Parsing
@@ -90,4 +90,4 @@ const mockResponse = '{"status": "success", "score": 900}';
 const resultObj = JSON.parse(mockResponse);
 outputElement.innerHTML = "<p>Parsed Status: " + resultObj.status + " | Final Score: " + resultObj.score + "</p>";
 {% endcapture %}
-{% include runners/ui.html runner_id="io_json_parsing" challenge=io_json_parsing_chal code=io_json_parsing_code height="120px" %}
+{% include runners/code.html language="javascript" runner_id="io_json_parsing" challenge=io_json_parsing_chal code=io_json_parsing_code %}
