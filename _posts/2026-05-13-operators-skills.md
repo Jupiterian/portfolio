@@ -21,7 +21,7 @@ We calculate physics constraints such as velocities or collisions boundaries.
 const grav = 9.8;
 let vY = -15; // Negative Y goes up
 vY += grav * 0.1; // Mathematical addition & multiplication
-outputElement.innerHTML = "<p>New Velocity: " + vY.toFixed(2) + "</p>";
+console.log("New Velocity: " + vY.toFixed(2));
 {% endcapture %}
 {% include runners/code.html language="javascript" runner_id="op_mathematical" challenge=op_mathematical_chal code=op_mathematical_code %}
 
@@ -35,7 +35,7 @@ const root = "/images/";
 const file = "player.png";
 // String Concatenation
 const fullPath = root + file;
-outputElement.innerHTML = "<p>Full Asset Path: <code>" + fullPath + "</code></p>";
+console.log("Full Asset Path: " + fullPath);
 {% endcapture %}
 {% include runners/code.html language="javascript" runner_id="op_string_ops" challenge=op_string_ops_chal code=op_string_ops_code %}
 
@@ -50,6 +50,6 @@ const playerLeft = 50, enemyRight = 45;
 const isColliding = playerLeft < enemyRight;
 // Logical NOT (!) operator
 const safe = !isColliding;
-outputElement.innerHTML = "<p>Is Safe: " + safe + "</p>";
+console.log("Is Safe: " + safe);
 {% endcapture %}
 {% include runners/code.html language="javascript" runner_id="op_boolean_expr" challenge=op_boolean_expr_chal code=op_boolean_expr_code %}

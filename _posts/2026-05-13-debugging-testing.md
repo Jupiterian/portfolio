@@ -19,7 +19,7 @@ We trace memory using the console.
 {% capture dbg_console_chal %}Demonstrating Console Debugging hooks.{% endcapture %}
 {% capture dbg_console_code %}
 const traceMsg = "Player loaded into level 2";
-outputElement.innerHTML = "<p>Sending to JS Console -> <code>console.log('" + traceMsg + "');</code></p>";
+console.log(traceMsg);
 {% endcapture %}
 {% include runners/code.html language="javascript" runner_id="dbg_console" challenge=dbg_console_chal code=dbg_console_code %}
 
@@ -31,7 +31,7 @@ We securely examine local storage and cookies natively.
 {% capture dbg_app_code %}
 localStorage.setItem('levelProgression', '3');
 const val = localStorage.getItem('levelProgression');
-outputElement.innerHTML = "<p>Inspecting LocalStorage for 'levelProgression': " + val + "</p>";
+console.log("Inspecting LocalStorage for 'levelProgression': " + val);
 {% endcapture %}
 {% include runners/code.html language="javascript" runner_id="dbg_app" challenge=dbg_app_chal code=dbg_app_code %}
 
@@ -44,7 +44,7 @@ We deploy try/catch wrappers targeting fetches to prevent game crashes.
 try {
     throw new Error("404 HTTP Fetch failure");
 } catch(e) {
-    outputElement.innerHTML = '<p style="color:red">Handled Exception: ' + e.message + '</p>';
+    console.log("Handled Exception: " + e.message);
 }
 {% endcapture %}
 {% include runners/code.html language="javascript" runner_id="dbg_err_handle" challenge=dbg_err_handle_chal code=dbg_err_handle_code %}
@@ -55,6 +55,6 @@ We manually instruct our GameLevel configuration to trace hitboxes by turning ga
 
 {% capture dbg_visual_chal %}Tracing settings for tools.{% endcapture %}
 {% capture dbg_visual_code %}
-outputElement.innerHTML = "<p><i>Settings visually verify integrations using DevTools.</i></p>";
+console.log("Settings visually verify integrations using DevTools.");
 {% endcapture %}
 {% include runners/code.html language="javascript" runner_id="dbg_visual" challenge=dbg_visual_chal code=dbg_visual_code %}

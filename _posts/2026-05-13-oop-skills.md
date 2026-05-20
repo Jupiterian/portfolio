@@ -26,7 +26,7 @@ class GameObject {
         this.type = "Generic";
     }
 }
-outputElement.innerHTML = "<p>Class <b>GameObject</b> created.</p>";
+console.log("Class GameObject created.");
 {% endcapture %}
 {% include runners/code.html language="javascript" runner_id="oop_writing_classes" challenge=oop_writing_classes_chal code=oop_writing_classes_code %}
 
@@ -43,7 +43,7 @@ class PhysicsObject {
     }
 }
 const obj = new PhysicsObject();
-outputElement.innerHTML = "<p>" + obj.applyForce(5, -10) + "</p>";
+console.log(obj.applyForce(5, -10));
 {% endcapture %}
 {% include runners/code.html language="javascript" runner_id="oop_methods_params" challenge=oop_methods_params_chal code=oop_methods_params_code %}
 
@@ -61,7 +61,7 @@ class Player {
 // Instantiating the object
 const myPlayer = new Player("IshanPig");
 
-outputElement.innerHTML = "<p>Instantiated Player: <b>" + myPlayer.name + "</b></p>";
+console.log("Instantiated Player: " + myPlayer.name);
 {% endcapture %}
 {% include runners/code.html language="javascript" runner_id="oop_instantiation" challenge=oop_instantiation_chal code=oop_instantiation_code %}
 
@@ -75,7 +75,7 @@ class Character {}
 // Inheriting using 'extends'
 class Boss extends Character {}
 
-outputElement.innerHTML = "<p>Does Boss inherit Character? <b>" + (new Boss() instanceof Character) + "</b></p>";
+console.log("Does Boss inherit Character? " + (new Boss() instanceof Character));
 {% endcapture %}
 {% include runners/code.html language="javascript" runner_id="oop_inheritance" challenge=oop_inheritance_chal code=oop_inheritance_code %}
 
@@ -93,7 +93,7 @@ class SubClass extends Base {
     update() { return "SubClass Custom Update"; }
 }
 const item = new SubClass();
-outputElement.innerHTML = "<p>Result: <b>" + item.update() + "</b></p>";
+console.log("Result: " + item.update());
 {% endcapture %}
 {% include runners/code.html language="javascript" runner_id="oop_overriding" challenge=oop_overriding_chal code=oop_overriding_code %}
 
@@ -113,6 +113,6 @@ class Enemy extends Entity {
     }
 }
 const badGuy = new Enemy(100, 25);
-outputElement.innerHTML = "<p>Enemy Health (from parent): " + badGuy.health + ", Damage (from child): " + badGuy.damage + "</p>";
+console.log("Enemy Health (from parent): " + badGuy.health + ", Damage (from child): " + badGuy.damage);
 {% endcapture %}
 {% include runners/code.html language="javascript" runner_id="oop_constructor_chain" challenge=oop_constructor_chain_chal code=oop_constructor_chain_code %}

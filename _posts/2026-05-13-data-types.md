@@ -20,7 +20,7 @@ We track positions, boundaries, and variables like velocity.
 {% capture dt_numbers_code %}
 const positionX = 150.5;
 const positionY = 200;
-outputElement.innerHTML = "<p>Pos: (" + positionX + ", " + positionY + ")</p>";
+console.log("Pos: (" + positionX + ", " + positionY + ")");
 {% endcapture %}
 {% include runners/code.html language="javascript" runner_id="dt_numbers" challenge=dt_numbers_chal code=dt_numbers_code %}
 
@@ -32,7 +32,7 @@ We manage paths, IDs, names, and visual keys.
 {% capture dt_strings_code %}
 const spriteName = "peppa-pig-boss.png";
 const charName = "Peppa Boss";
-outputElement.innerHTML = "<p>Loaded " + charName + " via " + spriteName + "</p>";
+console.log("Loaded " + charName + " via " + spriteName);
 {% endcapture %}
 {% include runners/code.html language="javascript" runner_id="dt_strings" challenge=dt_strings_chal code=dt_strings_code %}
 
@@ -44,7 +44,7 @@ We manage state toggles in the game loop.
 {% capture dt_booleans_code %}
 const isJumping = false;
 const isVulnerable = true;
-outputElement.innerHTML = "<p>Jumping: " + isJumping + " | Vulnerable: " + isVulnerable + "</p>";
+console.log("Jumping: " + isJumping + " | Vulnerable: " + isVulnerable);
 {% endcapture %}
 {% include runners/code.html language="javascript" runner_id="dt_booleans" challenge=dt_booleans_chal code=dt_booleans_code %}
 
@@ -55,7 +55,7 @@ We store dynamically generated characters or collections.
 {% capture dt_arrays_chal %}Demonstrating Arrays.{% endcapture %}
 {% capture dt_arrays_code %}
 const inventory = ["Health Potion", "Jump Boots", "Coin"];
-outputElement.innerHTML = "<p>Inventory items: " + inventory.length + " (" + inventory[0] + ")</p>";
+console.log("Inventory items: " + inventory.length + " (" + inventory[0] + ")");
 {% endcapture %}
 {% include runners/code.html language="javascript" runner_id="dt_arrays" challenge=dt_arrays_chal code=dt_arrays_code %}
 
@@ -66,6 +66,6 @@ We format environment and sprite properties mapping keys to values.
 {% capture dt_objects_chal %}Demonstrating Objects (JSON).{% endcapture %}
 {% capture dt_objects_code %}
 const configBlock = { width: 800, height: 600, background: "blue" };
-outputElement.innerHTML = "<p>Resolution: " + configBlock.width + "x" + configBlock.height + "</p>";
+console.log("Resolution: " + configBlock.width + "x" + configBlock.height);
 {% endcapture %}
 {% include runners/code.html language="javascript" runner_id="dt_objects" challenge=dt_objects_chal code=dt_objects_code %}
