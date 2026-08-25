@@ -102,7 +102,10 @@ Here is what I did at those places
 - 🏫 Completed Elementary and middle school at Design39, 2014-25
 - 🇮🇳 Son of immigrants from India
 - 🎾 Got introduced to tennis at the age of 5 - avid tennis fan and player
-- 💼 2x CyberPatriot National Finalist (My team placed 2nd out of 700+ teams) in 2025
+(Roger Federer is my GOAT but Novak Djokovic is the GOAT)
+- 💼 2x CyberPatriot National Finalist
+- Project NexTech Executive Commitee Member
+- IAI2O Global Finalist
 - 🏏 Big cricket fan (supports RCB)
 
 ### Culture, Family, and Fun
