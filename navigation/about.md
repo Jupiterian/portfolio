@@ -6,6 +6,7 @@ comments: true
 ---
 
 ## As a conversation Starter
+A more detailed about me: [ishanjha.com](https://ishanjha.com/)
 
 Here are some places I have lived.
 
