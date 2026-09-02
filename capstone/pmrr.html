@@ -1,0 +1,380 @@
+---
+layout: opencs
+title: Poway-Midland Railroad — Digital Experience Plan
+permalink: /capstone/pmrr/
+hide: true
+description: A capstone plan for the Poway-Midland Railroad — what we propose to build, and what we could build together with the railroad as a partner.
+---
+
+<style>
+.pm-doc{
+  --ink:#F0F0F0; --muted:#9aa4a8; --bg:#1F2020; --panel:#26292a; --panel-2:#2E3233;
+  --line:#3c4142; --brass:#D9A441; --rail:#4ADE80; --steam:#4CAFEF; --warn:#FBBF24; --bad:#E5533E;
+  color:var(--ink); line-height:1.6; font-size:16px;
+}
+.pm-doc *{box-sizing:border-box;}
+.pm-doc h2,.pm-doc h3,.pm-doc h4{color:var(--ink); line-height:1.25; margin:0 0 .5rem;}
+.pm-doc p{margin:0 0 1rem;}
+.pm-doc a{color:var(--steam);}
+
+.pm-hero{border:1px solid var(--line); border-left:5px solid var(--brass); border-radius:10px;
+  background:linear-gradient(160deg,#2b2415 0%,var(--panel) 55%); padding:26px 24px; margin:0 0 22px;}
+.pm-kicker{font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--brass); font-weight:800; margin:0 0 8px;}
+.pm-hero h1{font-size:30px; margin:0 0 10px; line-height:1.2; color:#fff;}
+.pm-hero p{color:#d6dadb; margin:0;}
+
+.pm-meta{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:10px; margin:0 0 26px;}
+.pm-meta div{background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:11px 13px;}
+.pm-meta .k{font-size:11px; letter-spacing:.09em; text-transform:uppercase; color:var(--muted); font-weight:700;}
+.pm-meta .v{font-size:14px; font-weight:600; margin-top:3px;}
+
+.pm-part{border-top:3px solid var(--brass); margin:40px 0 0; padding-top:22px;}
+.pm-part > h2{font-size:25px; margin-bottom:4px;}
+.pm-part .lead{color:#c3c9ca; font-size:15px; margin:0 0 22px;}
+
+/* Feature card with before/after */
+.pm-feat{background:var(--panel); border:1px solid var(--line); border-radius:11px; padding:17px 19px; margin:0 0 16px;}
+.pm-feat .head{display:flex; align-items:baseline; gap:11px; flex-wrap:wrap; margin-bottom:4px;}
+.pm-feat .idx{font-family:ui-monospace,SFMono-Regular,Menlo,monospace; color:var(--brass); font-weight:800; font-size:13px;}
+.pm-feat h4{font-size:17px; margin:0;}
+.pm-feat .why{font-size:14.5px; color:#cdd2d3; margin:8px 0 12px;}
+.pm-ba{display:grid; grid-template-columns:1fr 1fr; gap:11px; margin:0 0 11px;}
+@media(max-width:540px){.pm-ba{grid-template-columns:1fr;}}
+.pm-ba div{border:1px solid var(--line); border-radius:8px; padding:10px 12px; font-size:13.5px; background:rgba(255,255,255,.02);}
+.pm-ba .lab{font-size:10px; letter-spacing:.11em; text-transform:uppercase; font-weight:800; margin-bottom:4px;}
+.pm-ba .before .lab{color:var(--bad);} .pm-ba .after .lab{color:var(--rail);}
+.pm-ba .after{border-left:3px solid var(--rail);}
+.pm-ba .before{border-left:3px solid var(--bad);}
+.pm-stack{font-size:12px; color:var(--muted); font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  border-top:1px dashed var(--line); padding-top:9px;}
+.pm-stack b{color:#c3c9ca; font-family:inherit;}
+
+.b{display:inline-block; font-size:11px; font-weight:800; letter-spacing:.06em; text-transform:uppercase;
+  padding:3px 9px; border-radius:99px; border:1px solid; margin:0 5px 5px 0;}
+.b-p1{color:var(--rail); border-color:#2f6b47; background:rgba(74,222,128,.1);}
+.b-p2{color:var(--brass); border-color:#6b5423; background:rgba(217,164,65,.1);}
+.b-p3{color:var(--steam); border-color:#2c5670; background:rgba(76,175,239,.1);}
+.b-mute{color:var(--muted); border-color:var(--line); background:rgba(255,255,255,.03);}
+.b-bad{color:var(--bad); border-color:#6b2f2f; background:rgba(229,83,62,.12);}
+
+.pm-doc table.t{width:100%; border-collapse:collapse; font-size:14px; margin:0 0 18px; display:block; overflow-x:auto;}
+.pm-doc table.t th{text-align:left; background:var(--panel-2); color:var(--muted); font-size:11px;
+  letter-spacing:.09em; text-transform:uppercase; padding:9px 11px; border:1px solid var(--line); white-space:nowrap;}
+.pm-doc table.t td{padding:9px 11px; border:1px solid var(--line); vertical-align:top;}
+.pm-doc table.t tr:nth-child(even) td{background:rgba(255,255,255,.022);}
+
+.pm-note{border:1px dashed var(--line); border-radius:9px; padding:13px 16px; margin:0 0 18px;
+  background:rgba(217,164,65,.06); font-size:14px; color:#c8cdce;}
+.pm-note b{color:var(--brass);}
+
+.pm-quote{border-left:4px solid var(--steam); background:var(--panel); border-radius:0 9px 9px 0;
+  padding:13px 17px; margin:0 0 15px; font-size:14.5px; color:#cdd2d3;}
+.pm-quote cite{display:block; margin-top:7px; font-size:12.5px; color:var(--muted); font-style:normal;}
+
+.pm-check{list-style:none; padding:0; margin:0 0 18px;}
+.pm-check li{padding:7px 0 7px 30px; position:relative; border-bottom:1px solid rgba(255,255,255,.05); font-size:14.5px;}
+.pm-check li::before{position:absolute; left:0; top:7px; font-size:14px;}
+.pm-check li.yes::before{content:"\2705";}
+.pm-check li.no::before{content:"\274C";}
+.pm-check li.wait::before{content:"\23F3";}
+
+.pm-partner{background:var(--panel); border:1px solid var(--line); border-left:4px solid var(--brass);
+  border-radius:0 10px 10px 0; padding:16px 19px; margin:0 0 15px;}
+.pm-partner .code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace; color:var(--brass);
+  font-weight:800; font-size:13px; letter-spacing:.06em;}
+.pm-partner h4{font-size:17px; margin:3px 0 7px;}
+.pm-partner p{font-size:14.5px; color:#cdd2d3; margin:0 0 9px;}
+.pm-partner .need{font-size:13px; color:var(--muted); border-top:1px dashed var(--line); padding-top:9px; margin:0;}
+.pm-partner .need b{color:#c3c9ca;}
+
+.pm-sprints{display:grid; gap:10px; margin:0 0 18px;}
+.pm-sprint{display:grid; grid-template-columns:88px 1fr; gap:14px; background:var(--panel);
+  border:1px solid var(--line); border-radius:9px; padding:13px 15px;}
+.pm-sprint .w{font-size:11px; letter-spacing:.09em; text-transform:uppercase; color:var(--brass); font-weight:800; padding-top:2px;}
+.pm-sprint b{display:block; font-size:15px; margin-bottom:3px;}
+.pm-sprint p{margin:0; font-size:13.5px; color:#c0c6c7;}
+@media(max-width:520px){.pm-sprint{grid-template-columns:1fr; gap:4px;}}
+
+.pm-toc{background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:16px 20px; margin:0 0 30px;}
+.pm-toc h4{font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-bottom:10px;}
+.pm-toc ul{margin:0; padding-left:20px;} .pm-toc li{margin:0 0 5px; font-size:14px;}
+</style>
+
+<div class="pm-doc">
+
+<div class="pm-hero">
+  <p class="pm-kicker">Capstone Plan &middot; Design-Based Research</p>
+  <h1>Poway-Midland Railroad Digital Experience</h1>
+  <p>A heritage railroad at Old Poway Park runs on volunteers, a paper calendar, and a static website. This plan proposes turning that site into a working operations and visitor platform &mdash; and then names exactly which pieces we cannot finish without the railroad itself at the table.</p>
+</div>
+
+<div class="pm-meta">
+  <div><div class="k">Nonprofit</div><div class="v">Poway-Midland Railroad</div></div>
+  <div><div class="k">User group</div><div class="v">Visitors, families, volunteer crews, station staff</div></div>
+  <div><div class="k">Owner</div><div class="v">Ishan Jha &mdash; Scrummer</div></div>
+  <div><div class="k">Status</div><div class="v"><span class="b b-p2">Proposal &mdash; pre-build</span></div></div>
+  <div><div class="k">Prior art</div><div class="v"><a href="https://pages.opencodingsociety.com/capstone/rcr/">RCR team capstone</a></div></div>
+  <div><div class="k">Companion plan</div><div class="v"><a href="/sfi/storyboard/">SFI Foundation storyboard</a></div></div>
+</div>
+
+<div class="pm-toc">
+  <h4>Contents</h4>
+  <ul>
+    <li><a href="#p1">Part 1 &mdash; What We Would Build: proposed features vs. the current PMRR site</a></li>
+    <li><a href="#research">Research already in hand &mdash; what the last team learned</a></li>
+    <li><a href="#improve">What we would do differently</a></li>
+    <li><a href="#plan">Build plan and priorities</a></li>
+    <li><a href="#p2">Part 2 &mdash; With Partnership: what we could build together</a></li>
+    <li><a href="#done">Definition of done</a></li>
+  </ul>
+</div>
+
+<div class="pm-note"><b>Read this as a proposal, not a report.</b> Nothing below has been built by this team yet. Where a claim comes from prior work &mdash; the RCR capstone, PMRR staff comments, public reviews &mdash; it is attributed. Everything else is scoped work with an owner and a sprint.</div>
+
+<!-- ================= PART 1 ================= -->
+<section class="pm-part" id="p1">
+  <h2>Part 1 &mdash; What We Would Build</h2>
+  <p class="lead">Proposed features, each stated against what the current PMRR website actually does today. Priority badges reflect the feedback in the research section below, not our own enthusiasm.</p>
+
+  <div class="pm-feat">
+    <div class="head"><span class="idx">01</span><h4>Live Departure Board</h4><span class="b b-p1">Priority 1</span></div>
+    <p class="why">The single question every visitor arrives with is "when is the next train, and can I get on it?" Today that answer requires reading a static table and guessing.</p>
+    <div class="pm-ba">
+      <div class="before"><div class="lab">Now</div>A hand-edited HTML schedule table. Cancellations and weather closures reach visitors only if someone remembers to edit the page.</div>
+      <div class="after"><div class="lab">Proposed</div>A departure board that reads from a database: next departure, minutes remaining, seats left, and a clear "not running today" state that staff can set in one tap.</div>
+    </div>
+    <p class="pm-stack"><b>Stack:</b> Flask + SQLite behind a JSON endpoint, Jekyll front end, polling refresh with a cached last-known-good render for offline visitors.</p>
+  </div>
+
+  <div class="pm-feat">
+    <div class="head"><span class="idx">02</span><h4>Online Reservations</h4><span class="b b-p1">Priority 1</span></div>
+    <p class="why">PMRR has never had online booking. Every seat is claimed in person, which caps attendance at whoever happens to show up and makes special events hard to plan for.</p>
+    <div class="pm-ba">
+      <div class="before"><div class="lab">Now</div>Walk-up only. No way to hold a seat, no record of expected attendance, no confirmation a family can show at the window.</div>
+      <div class="after"><div class="lab">Proposed</div>Pick a departure, reserve seats, receive a confirmation code. Server-side seat-conflict checks make overbooking structurally impossible rather than merely unlikely.</div>
+    </div>
+    <p class="pm-stack"><b>Stack:</b> Flask routes with transactional seat locking, SQLite, confirmation codes generated server-side. No payment processing in this phase &mdash; see Part 2.</p>
+  </div>
+
+  <div class="pm-feat">
+    <div class="head"><span class="idx">03</span><h4>Volunteer Crew Scheduling</h4><span class="b b-p1">Priority 1</span></div>
+    <p class="why">The railroad runs on volunteer crews coordinated by phone and paper. This is the feature that saves staff time every single week, which is why it outranks anything visitor-facing that looks flashier.</p>
+    <div class="pm-ba">
+      <div class="before"><div class="lab">Now</div>Phone calls and a paper calendar. Nobody can see live coverage; a gap is discovered on the morning it matters.</div>
+      <div class="after"><div class="lab">Proposed</div>Volunteers see the operating calendar, claim or release shifts themselves, and a coverage bar shows which days are short-crewed weeks in advance.</div>
+    </div>
+    <p class="pm-stack"><b>Stack:</b> Flask-Login sessions, SQLite shift table, role separation between volunteer and coordinator views.</p>
+  </div>
+
+  <div class="pm-feat">
+    <div class="head"><span class="idx">04</span><h4>Staff Admin Dashboard</h4><span class="b b-p1">Priority 1</span></div>
+    <p class="why">Prior feedback from PMRR was blunt about this: a feature staff cannot update themselves becomes stale within a month and then actively misleads visitors.</p>
+    <div class="pm-ba">
+      <div class="before"><div class="lab">Now</div>Any content change requires someone who can edit HTML and deploy the site.</div>
+      <div class="after"><div class="lab">Proposed</div>A login-gated dashboard where staff edit the schedule, post announcements, cancel a run, and view reservations &mdash; with no code and no deploy.</div>
+    </div>
+    <p class="pm-stack"><b>Stack:</b> Flask-Login, hashed credentials in SQLite, audit log of who changed what and when.</p>
+  </div>
+
+  <div class="pm-feat">
+    <div class="head"><span class="idx">05</span><h4>Events &amp; Announcements Board</h4><span class="b b-p2">Priority 2</span></div>
+    <p class="why">Seasonal events are a large share of PMRR's attendance, and they are currently announced as plain text buried on a page.</p>
+    <div class="pm-ba">
+      <div class="before"><div class="lab">Now</div>Undifferentiated text listings with no dates a calendar app can read.</div>
+      <div class="after"><div class="lab">Proposed</div>Searchable, filterable announcements categorized as Events, Volunteer, Operations, or Service, each with structured dates and an add-to-calendar link.</div>
+    </div>
+    <p class="pm-stack"><b>Stack:</b> SQLite-backed posts, category filter in the client, staff-editable through the admin dashboard.</p>
+  </div>
+
+  <div class="pm-feat">
+    <div class="head"><span class="idx">06</span><h4>Interactive Fleet Encyclopedia</h4><span class="b b-p2">Priority 2</span></div>
+    <p class="why">The rolling stock <em>is</em> the attraction. A visitor who knows what they are looking at before arriving has a better visit, and a donor who understands a restoration is more likely to fund it.</p>
+    <div class="pm-ba">
+      <div class="before"><div class="lab">Now</div>A short paragraph and a handful of photos.</div>
+      <div class="after"><div class="lab">Proposed</div>A visual roster of every piece of rolling stock &mdash; photos, technical specifications, operational status, and restoration history in a modal detail view, filterable by whether it is running.</div>
+    </div>
+    <p class="pm-stack"><b>Stack:</b> Static JSON roster, responsive card grid, accessible modal pattern with focus trapping.</p>
+  </div>
+
+  <div class="pm-feat">
+    <div class="head"><span class="idx">07</span><h4>Interactive History Timeline</h4><span class="b b-p2">Priority 2</span></div>
+    <p class="why">A heritage railroad's product is history. Presenting it as a wall of prose wastes the best material the organization has.</p>
+    <div class="pm-ba">
+      <div class="before"><div class="lab">Now</div>A long block of text with a few dates in it.</div>
+      <div class="after"><div class="lab">Proposed</div>Clickable eras from the 1880s to the present, each expanding into photographs, key figures, and sourced quotes. Every claim carries an attribution line.</div>
+    </div>
+    <p class="pm-stack"><b>Stack:</b> Structured JSON timeline, progressive-disclosure UI, sourced-content policy enforced in review.</p>
+  </div>
+
+  <div class="pm-feat">
+    <div class="head"><span class="idx">08</span><h4>Membership &amp; Donation Portal</h4><span class="b b-p2">Priority 2</span></div>
+    <p class="why">Right now supporting the railroad requires contacting someone. Every step between intent and donation loses donors.</p>
+    <div class="pm-ba">
+      <div class="before"><div class="lab">Now</div>A contact form and an implied "get in touch."</div>
+      <div class="after"><div class="lab">Proposed</div>Individual and family membership tiers, one-time gifts, and recurring support presented as a self-service flow.</div>
+    </div>
+    <p class="pm-stack"><b>Stack:</b> Flask forms and records. <b>Live payment processing is explicitly out of scope</b> &mdash; it needs the railroad's merchant account. See Part 2.</p>
+  </div>
+
+  <div class="pm-feat">
+    <div class="head"><span class="idx">09</span><h4>Visitor Forecast (ML)</h4><span class="b b-p3">Priority 3</span></div>
+    <p class="why">Useful for staffing decisions, but only once it is trained on something better than proxies. We are listing it honestly as an experiment, not a promise.</p>
+    <div class="pm-ba">
+      <div class="before"><div class="lab">Now</div>No attendance prediction. Crew size is set by intuition and past Saturdays.</div>
+      <div class="after"><div class="lab">Proposed</div>A gradient-boosting model over weather, season, school calendar, and holidays, producing hourly visitor estimates with the uncertainty shown rather than hidden.</div>
+    </div>
+    <p class="pm-stack"><b>Stack:</b> scikit-learn, Open-Meteo weather API, offline training with the fitted model served read-only. <b>Blocked on real attendance data</b> &mdash; see Part 2.</p>
+  </div>
+
+  <div class="pm-feat">
+    <div class="head"><span class="idx">10</span><h4>Route Map &amp; 360&deg; Panoramas</h4><span class="b b-p3">Priority 3</span></div>
+    <p class="why">Good for pre-visit planning and for accessibility &mdash; a visitor who cannot easily walk the park can still see it.</p>
+    <div class="pm-ba">
+      <div class="before"><div class="lab">Now</div>A single static site photograph.</div>
+      <div class="after"><div class="lab">Proposed</div>Switchable panoramic scenes plus an interactive map of the loop with labelled stops and accessibility notes.</div>
+    </div>
+    <p class="pm-stack"><b>Stack:</b> Pannellum for panoramas, Leaflet with OpenStreetMap tiles, self-hosted image assets.</p>
+  </div>
+
+  <div class="pm-feat">
+    <div class="head"><span class="idx">11</span><h4>Visitor Notes Community Board</h4><span class="b b-p3">Priority 3</span></div>
+    <p class="why">Worth building, but nothing user-generated ships without moderation, because a small volunteer organization cannot absorb the cost of an unmoderated board.</p>
+    <div class="pm-ba">
+      <div class="before"><div class="lab">Now</div>No visitor voice on the site at all; feedback lives on third-party review platforms.</div>
+      <div class="after"><div class="lab">Proposed</div>Short visitor notes with optional photos and upvotes &mdash; behind a staff moderation queue that is part of the feature, not a later addition.</div>
+    </div>
+    <p class="pm-stack"><b>Stack:</b> SQLite posts with a pending/approved state, image size limits enforced server-side, moderation surfaced in the admin dashboard.</p>
+  </div>
+
+  <div class="pm-feat">
+    <div class="head"><span class="idx">12</span><h4>Visit-Planning Assistant</h4><span class="b b-p2">Priority 2</span></div>
+    <p class="why">Staff feedback on the prior capstone identified an assistant as the highest-value time saver, because the same handful of questions consume most of the phone calls.</p>
+    <div class="pm-ba">
+      <div class="before"><div class="lab">Now</div>Repetitive questions about hours, fares, parking, and accessibility go to whoever picks up the phone.</div>
+      <div class="after"><div class="lab">Proposed</div>A widget that answers planning, history, and volunteering questions from the site's own live data, and hands off to a human when it does not know &mdash; never guessing at operational facts.</div>
+    </div>
+    <p class="pm-stack"><b>Stack:</b> Rule-based responses over structured site data in phase one. LLM upgrade is a partnership item, not a phase-one commitment.</p>
+  </div>
+</section>
+
+<!-- ================= RESEARCH ================= -->
+<section class="pm-part" id="research">
+  <h2>&#128172; Research Already In Hand</h2>
+  <p class="lead">We are not starting from zero. A previous Open Coding Society team (RCR) built and demonstrated a PMRR platform, then published what worked and what did not. Their retro is the most valuable input to this plan.</p>
+
+  <div class="pm-quote">
+    "Although we invested significant effort in preparing the schedule system, our guests showed more interest in other functions."
+    <cite>&mdash; RCR team retrospective, <a href="https://pages.opencodingsociety.com/capstone/rcr/">capstone/rcr</a></cite>
+  </div>
+
+  <h3>What the last team's feedback tells us to do</h3>
+  <table class="t">
+    <tr><th>Finding</th><th>Source</th><th>What we changed in this plan</th></tr>
+    <tr><td>GPS train tracking was unnecessary at this site's scale</td><td>PMRR staff</td><td>Cut entirely. Not in the feature list above.</td></tr>
+    <tr><td>The AI assistant was the most valued feature for reducing staff workload</td><td>PMRR staff</td><td>Promoted to Priority 2, scoped to answer from live site data</td></tr>
+    <tr><td>Staff need to update news and schedules themselves</td><td>PMRR staff</td><td>Admin dashboard moved into Priority 1 &mdash; it is a launch requirement, not a follow-up</td></tr>
+    <tr><td>User research should have driven where effort went</td><td>RCR retro</td><td>Priorities set from staff feedback before any code is written, revisited after first user testing</td></tr>
+    <tr><td>Verbal articulation at the CTE Expo needed more preparation</td><td>RCR retro</td><td>Demo script and a rehearsed 3-minute walkthrough built in Sprint 4, not the night before</td></tr>
+  </table>
+
+  <div class="pm-note"><b>The lesson we are taking:</b> the previous team's most-polished feature was not the one users cared about. Build order here follows staff time saved first, visitor experience second, and machine learning last.</div>
+</section>
+
+<!-- ================= IMPROVE ================= -->
+<section class="pm-part" id="improve">
+  <h2>&#128221; What We Would Do Differently</h2>
+  <ul class="pm-check">
+    <li class="yes">Talk to PMRR staff <em>before</em> choosing what to build, then again at the midpoint &mdash; not only at the expo.</li>
+    <li class="yes">Ship the admin dashboard with the first feature it manages, so nothing goes stale waiting for it.</li>
+    <li class="yes">Treat moderation, offline states, and error states as part of a feature's definition of done, not as polish.</li>
+    <li class="no">Do not build GPS tracking. Prior feedback already answered this.</li>
+    <li class="no">Do not present a machine learning model trained on proxies as though it were trained on real attendance.</li>
+    <li class="wait">Do not connect live payments until the railroad's own merchant account and approval are in place.</li>
+  </ul>
+</section>
+
+<!-- ================= PLAN ================= -->
+<section class="pm-part" id="plan">
+  <h2>&#128203; Build Plan</h2>
+  <div class="pm-sprints">
+    <div class="pm-sprint"><div class="w">Sprint 1</div><div><b>Foundation &amp; staff tools</b><p>Repo scaffolding with CI, shared design system, data model, authentication, and the staff admin dashboard. Nothing visitor-facing ships before staff can edit it.</p></div></div>
+    <div class="pm-sprint"><div class="w">Sprint 2</div><div><b>Operations</b><p>Departure board, reservations with seat-conflict handling, volunteer shift scheduling. This is the sprint that saves staff time.</p></div></div>
+    <div class="pm-sprint"><div class="w">Sprint 3</div><div><b>Visitor experience</b><p>Events board, fleet encyclopedia, history timeline, membership and donation flow, visit-planning assistant.</p></div></div>
+    <div class="pm-sprint"><div class="w">Sprint 4</div><div><b>Stretch, accessibility &amp; handoff</b><p>Route map and panoramas, moderated visitor notes, forecast experiment if data allows. Accessibility pass, staging deploy, staff walkthrough, demo script, handoff documentation.</p></div></div>
+  </div>
+
+  <h3>Risks</h3>
+  <table class="t">
+    <tr><th>Risk</th><th>Likelihood</th><th>Mitigation</th></tr>
+    <tr><td>No real attendance data, so the forecast stays a proxy model</td><td><span class="b b-bad">High</span></td><td>Forecast is Priority 3 and labelled an experiment; the platform is complete without it</td></tr>
+    <tr><td>Staff do not adopt the admin dashboard</td><td><span class="b b-p2">Medium</span></td><td>Built in Sprint 1 and walked through with staff twice before launch; every content feature routes through it</td></tr>
+    <tr><td>Volunteer scheduling competes with an existing informal process</td><td><span class="b b-p2">Medium</span></td><td>Read-only coverage view first, self-service claiming second, so the paper calendar can stay authoritative during transition</td></tr>
+    <tr><td>User-generated notes attract spam a volunteer org cannot moderate</td><td><span class="b b-p2">Medium</span></td><td>Moderation queue ships with the feature; the board can be disabled from the dashboard in one click</td></tr>
+    <tr><td>Scope grows past a school-term capstone</td><td><span class="b b-bad">High</span></td><td>Priority 3 items are explicitly cuttable; Part 2 below exists so cut work has a documented home</td></tr>
+  </table>
+</section>
+
+<!-- ================= PART 2 ================= -->
+<section class="pm-part" id="p2">
+  <h2>Part 2 &mdash; With Partnership</h2>
+  <p class="lead">These are the features we genuinely cannot finish alone. Each one names the specific thing we need from the Poway-Midland Railroad, so the ask is a decision rather than a favor.</p>
+
+  <div class="pm-partner">
+    <span class="code">CAM</span>
+    <h4>Live Platform Camera</h4>
+    <p>A live view of the station platform answers "is it busy right now?" better than any predictive model, and it costs nothing to run once it exists.</p>
+    <p class="need"><b>We need:</b> an IP camera at Old Poway Park, network access for it, and a decision from the railroad about what may be shown publicly.</p>
+  </div>
+
+  <div class="pm-partner">
+    <span class="code">DATA</span>
+    <h4>Real Attendance History</h4>
+    <p>The forecast model is only worth shipping if it learns from actual ridership. With real ticket and headcount records, this moves from an experiment to a staffing tool.</p>
+    <p class="need"><b>We need:</b> historical ticket sales or headcounts, at any granularity, even a spreadsheet of daily totals.</p>
+  </div>
+
+  <div class="pm-partner">
+    <span class="code">PAY</span>
+    <h4>Live Payments for Memberships and Donations</h4>
+    <p>The donation flow can be built and tested end to end, but it cannot move real money without the railroad's own account. We will not connect a payment processor on a nonprofit's behalf.</p>
+    <p class="need"><b>We need:</b> the railroad's merchant or payment-processor account, and written approval to integrate against it.</p>
+  </div>
+
+  <div class="pm-partner">
+    <span class="code">AI</span>
+    <h4>Full Assistant Over Real Park Data</h4>
+    <p>Staff identified the assistant as the biggest time saver. Upgrading from rule-based answers to a language model grounded in real operational data is the highest-leverage next step &mdash; but only if it answers from facts the railroad has approved.</p>
+    <p class="need"><b>We need:</b> approved answer content, an escalation path for questions it should not answer, and a decision on who covers model costs.</p>
+  </div>
+
+  <div class="pm-partner">
+    <span class="code">GRP</span>
+    <h4>School &amp; Group Booking</h4>
+    <p>Group visits are handled entirely by phone today. A coordinator-facing booking path with custom pricing tiers would remove that bottleneck.</p>
+    <p class="need"><b>We need:</b> the railroad's group pricing rules, capacity limits, and lead-time policy.</p>
+  </div>
+
+  <div class="pm-partner">
+    <span class="code">STAFF</span>
+    <h4>Real Staff Accounts</h4>
+    <p>The admin dashboard is built against seed accounts. Real accounts turn it from a demo into the tool the railroad actually runs on.</p>
+    <p class="need"><b>We need:</b> a list of staff and volunteer coordinators, agreed roles and permissions, and an owner for account administration after handoff.</p>
+  </div>
+</section>
+
+<!-- ================= DONE ================= -->
+<section class="pm-part" id="done">
+  <h2>&#127919; Definition of Done</h2>
+  <ul class="pm-check">
+    <li class="yes">All Priority 1 features work end to end on a staging URL the railroad can reach.</li>
+    <li class="yes">A staff member with no technical background updates the schedule and posts an announcement, unassisted, while we watch.</li>
+    <li class="yes">A visitor completes reservation and volunteer sign-up flows on a phone with no unhandled errors.</li>
+    <li class="yes">CI passes on <code>main</code>, with no credentials or API keys committed to the repository.</li>
+    <li class="yes">Every Priority 3 or partnership-blocked feature is documented as such, so nothing unfinished is presented as finished.</li>
+    <li class="yes">A written handoff covers the data model, admin procedures, known limitations, and the Part 2 asks.</li>
+  </ul>
+
+  <div class="pm-note"><b>The one-sentence version:</b> build the boring tools that give volunteers their Saturdays back first, and let the beautiful visitor features earn their place after that.</div>
+</section>
+
+</div>

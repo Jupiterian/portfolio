@@ -62,6 +62,21 @@ Hi! My name is Ishan Jha
 
 <br>
 
+### Capstone Proposals
+
+> Nonprofit project proposals for Design-Based Research. Click to read the full plan.
+
+<div style="display: flex; flex-wrap: wrap; gap: 10px;">
+    <a href="{{site.baseurl}}/sfi/storyboard/" class="btn" style="background-color: var(--red);">
+       SFI Foundation &mdash; Storyboard
+    </a>
+    <a href="{{site.baseurl}}/capstone/pmrr/" class="btn" style="background-color: var(--orange);">
+       Poway-Midland Railroad &mdash; Plan
+    </a>
+</div>
+
+<br>
+
 ### Class Progress
 
 > Here is my game progress through coding, click to see these in the browser

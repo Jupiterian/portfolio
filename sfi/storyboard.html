@@ -1,0 +1,744 @@
+---
+layout: opencs
+title: SFI Foundation — Project Storyboard
+permalink: /sfi/storyboard/
+hide: true
+description: Storyboard and build proposal for the SFI Foundation web modernization capstone — ML spec search, QR certification verification, and a mobile-first redesign.
+---
+
+<style>
+.sfi-doc{
+  --ink:#F0F0F0; --muted:#9aa4a8; --bg:#1F2020; --panel:#26292a; --panel-2:#2E3233;
+  --line:#3c4142; --accent:#E4002B; --accent-2:#4CAFEF; --ok:#4ADE80; --warn:#FBBF24; --bad:#E5533E;
+  color:var(--ink); line-height:1.6; font-size:16px;
+}
+.sfi-doc *{box-sizing:border-box;}
+.sfi-doc h2,.sfi-doc h3,.sfi-doc h4{color:var(--ink); line-height:1.25; margin:0 0 .5rem;}
+.sfi-doc p{margin:0 0 1rem;}
+.sfi-doc a{color:var(--accent-2);}
+
+/* Hero */
+.sfi-hero{border:1px solid var(--line); border-left:5px solid var(--accent); border-radius:10px;
+  background:linear-gradient(160deg,#2b1114 0%,var(--panel) 55%); padding:26px 24px; margin:0 0 22px;}
+.sfi-kicker{font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent);
+  font-weight:800; margin:0 0 8px;}
+.sfi-hero h1{font-size:30px; margin:0 0 10px; line-height:1.2; color:#fff;}
+.sfi-hero p{color:#d6dadb; margin:0; font-size:16px;}
+
+/* Meta grid */
+.sfi-meta{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:10px; margin:0 0 26px;}
+.sfi-meta div{background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:11px 13px;}
+.sfi-meta dt,.sfi-meta .k{font-size:11px; letter-spacing:.09em; text-transform:uppercase; color:var(--muted); font-weight:700;}
+.sfi-meta .v{font-size:14px; font-weight:600; margin-top:3px;}
+
+/* TOC */
+.sfi-toc{background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:16px 20px; margin:0 0 30px;}
+.sfi-toc h4{font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-bottom:10px;}
+.sfi-toc ol{margin:0; padding-left:20px; columns:2; column-gap:26px;}
+.sfi-toc li{margin:0 0 5px; font-size:14px;}
+@media(max-width:560px){.sfi-toc ol{columns:1;}}
+
+/* Sections */
+.sfi-sec{border-top:1px solid var(--line); padding-top:26px; margin:34px 0 0;}
+.sfi-sec > h2{font-size:23px; display:flex; align-items:baseline; gap:11px; margin-bottom:6px;}
+.sfi-sec .n{display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto;
+  width:30px; height:30px; border-radius:50%; background:var(--accent); color:#fff;
+  font-size:14px; font-weight:800; align-self:center;}
+.sfi-phase{font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--accent-2);
+  font-weight:800; margin:0 0 14px 41px;}
+
+/* Cards */
+.sfi-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:14px; margin:0 0 18px;}
+.sfi-card{background:var(--panel); border:1px solid var(--line); border-radius:9px; padding:15px 17px;}
+.sfi-card h4{font-size:15px; margin-bottom:6px;}
+.sfi-card p{font-size:14px; color:#cdd2d3; margin:0;}
+.sfi-card .tag{font-size:11px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:var(--accent);}
+
+/* Case study */
+.sfi-case{background:var(--panel); border:1px solid var(--line); border-left:4px solid var(--accent-2);
+  border-radius:0 9px 9px 0; padding:15px 18px; margin:0 0 14px;}
+.sfi-case h4{font-size:16px; margin-bottom:4px;}
+.sfi-case .yr{color:var(--muted); font-weight:600; font-size:13px;}
+.sfi-case p{font-size:14.5px; margin:8px 0 0; color:#cdd2d3;}
+.sfi-case .link{font-size:13px; color:var(--muted); margin-top:9px; display:block;}
+
+/* Badges */
+.b{display:inline-block; font-size:11px; font-weight:800; letter-spacing:.06em; text-transform:uppercase;
+  padding:3px 9px; border-radius:99px; border:1px solid; margin:0 5px 5px 0;}
+.b-ok{color:var(--ok); border-color:#2f6b47; background:rgba(74,222,128,.1);}
+.b-warn{color:var(--warn); border-color:#6b5423; background:rgba(251,191,36,.1);}
+.b-bad{color:var(--bad); border-color:#6b2f2f; background:rgba(229,83,62,.12);}
+.b-info{color:var(--accent-2); border-color:#2c5670; background:rgba(76,175,239,.1);}
+.b-mute{color:var(--muted); border-color:var(--line); background:rgba(255,255,255,.03);}
+
+/* Tables */
+.sfi-doc table.t{width:100%; border-collapse:collapse; font-size:14px; margin:0 0 18px; display:block; overflow-x:auto;}
+.sfi-doc table.t th{text-align:left; background:var(--panel-2); color:var(--muted); font-size:11px;
+  letter-spacing:.09em; text-transform:uppercase; padding:9px 11px; border:1px solid var(--line); white-space:nowrap;}
+.sfi-doc table.t td{padding:9px 11px; border:1px solid var(--line); vertical-align:top;}
+.sfi-doc table.t tr:nth-child(even) td{background:rgba(255,255,255,.022);}
+
+/* Steps */
+.sfi-steps{counter-reset:s; list-style:none; padding:0; margin:0 0 18px;}
+.sfi-steps li{counter-increment:s; position:relative; padding:0 0 0 44px; margin:0 0 15px;}
+.sfi-steps li::before{content:counter(s); position:absolute; left:0; top:1px; width:29px; height:29px;
+  border-radius:7px; background:var(--panel-2); border:1px solid var(--line); color:var(--accent-2);
+  font-weight:800; font-size:14px; display:flex; align-items:center; justify-content:center;}
+.sfi-steps b{display:block; margin-bottom:2px;}
+.sfi-steps span{font-size:14.5px; color:#cdd2d3;}
+
+/* Callout */
+.sfi-note{border:1px dashed var(--line); border-radius:9px; padding:13px 16px; margin:0 0 18px;
+  background:rgba(76,175,239,.05); font-size:14px; color:#c8cdce;}
+.sfi-note b{color:var(--accent-2);}
+
+/* Tool */
+.sfi-tool{background:#191b1c; border:1px solid var(--line); border-radius:11px; padding:18px; margin:0 0 20px;}
+.sfi-tool .bar{display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:12px; flex-wrap:wrap;}
+.sfi-tool .bar h4{font-size:14px; margin:0;}
+.sfi-tool label{display:block; font-size:11px; letter-spacing:.09em; text-transform:uppercase;
+  color:var(--muted); font-weight:700; margin:0 0 5px;}
+.sfi-tool input, .sfi-tool select{width:100%; background:var(--panel); border:1px solid var(--line);
+  color:var(--ink); border-radius:7px; padding:11px 13px; font-size:15px; font-family:inherit;}
+.sfi-tool input:focus,.sfi-tool select:focus{outline:2px solid var(--accent-2); outline-offset:1px;}
+.sfi-btn{background:var(--accent); color:#fff; border:0; border-radius:7px; padding:10px 15px;
+  font-weight:700; font-size:14px; cursor:pointer; font-family:inherit;}
+.sfi-btn.ghost{background:transparent; border:1px solid var(--line); color:var(--ink);}
+.sfi-btn:hover{filter:brightness(1.12);}
+.sfi-res{margin-top:14px;}
+.sfi-hit{background:var(--panel); border:1px solid var(--line); border-left:3px solid var(--accent-2);
+  border-radius:0 8px 8px 0; padding:11px 14px; margin:0 0 9px;}
+.sfi-hit .no{font-family:ui-monospace,SFMono-Regular,Menlo,monospace; color:var(--accent); font-weight:700; font-size:13px;}
+.sfi-hit h5{margin:2px 0 4px; font-size:15px;}
+.sfi-hit p{margin:0; font-size:13.5px; color:#b9bfc0;}
+.sfi-empty{color:var(--muted); font-size:14px; font-style:italic;}
+.sfi-verdict{border-radius:9px; padding:15px 17px; border:1px solid; margin-top:14px;}
+.sfi-verdict h4{margin:0 0 6px; font-size:18px;}
+.sfi-verdict p{margin:0; font-size:14px;}
+.v-ok{border-color:#2f6b47; background:rgba(74,222,128,.09);} .v-ok h4{color:var(--ok);}
+.v-warn{border-color:#6b5423; background:rgba(251,191,36,.09);} .v-warn h4{color:var(--warn);}
+.v-bad{border-color:#6b2f2f; background:rgba(229,83,62,.09);} .v-bad h4{color:var(--bad);}
+.sfi-chips{display:flex; gap:7px; flex-wrap:wrap; margin-top:10px;}
+.sfi-chip{background:var(--panel-2); border:1px solid var(--line); color:#c8cdce; border-radius:99px;
+  padding:5px 11px; font-size:12px; cursor:pointer; font-family:ui-monospace,SFMono-Regular,Menlo,monospace;}
+.sfi-chip:hover{border-color:var(--accent-2); color:#fff;}
+
+/* Phones */
+.sfi-phones{display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:14px; margin:0 0 18px;}
+.sfi-phone{background:#0f1112; border:2px solid var(--line); border-radius:18px; padding:11px 10px 13px;}
+.sfi-phone .notch{width:44px; height:4px; border-radius:99px; background:var(--line); margin:0 auto 10px;}
+.sfi-phone .cap{font-size:11px; letter-spacing:.09em; text-transform:uppercase; color:var(--muted);
+  font-weight:700; text-align:center; margin-top:10px;}
+.ph-row{background:var(--panel); border-radius:6px; height:9px; margin:0 0 6px;}
+.ph-row.w70{width:70%;} .ph-row.w45{width:45%;} .ph-row.w85{width:85%;}
+.ph-search{background:var(--panel-2); border:1px solid var(--line); border-radius:8px; padding:9px 10px;
+  font-size:11px; color:var(--muted); margin:0 0 9px;}
+.ph-card{background:var(--panel); border-left:3px solid var(--accent-2); border-radius:0 6px 6px 0; padding:7px 8px; margin:0 0 7px;}
+.ph-card .t{font-size:10px; font-weight:800; color:var(--accent);}
+.ph-card .s{font-size:10px; color:var(--muted); margin-top:2px;}
+.ph-frame{border:2px dashed var(--accent-2); border-radius:8px; height:82px; display:flex;
+  align-items:center; justify-content:center; color:var(--accent-2); font-size:11px; margin:0 0 9px;}
+.ph-nav{display:flex; gap:5px; margin-top:11px; border-top:1px solid var(--line); padding-top:8px;}
+.ph-nav span{flex:1; text-align:center; font-size:9px; color:var(--muted);}
+.ph-nav span.on{color:var(--accent); font-weight:800;}
+.ph-ok{background:rgba(74,222,128,.12); border:1px solid #2f6b47; color:var(--ok);
+  border-radius:7px; padding:12px 8px; text-align:center; font-size:12px; font-weight:800;}
+
+/* Checklist */
+.sfi-check{list-style:none; padding:0; margin:0 0 18px;}
+.sfi-check li{padding:7px 0 7px 30px; position:relative; border-bottom:1px solid rgba(255,255,255,.05); font-size:14.5px;}
+.sfi-check li::before{position:absolute; left:0; top:7px; font-size:14px;}
+.sfi-check li.done::before{content:"\2705";}
+.sfi-check li.todo::before{content:"\2B1C";}
+.sfi-check li.no::before{content:"\274C";}
+
+/* Sprint timeline */
+.sfi-sprints{display:grid; gap:10px; margin:0 0 18px;}
+.sfi-sprint{display:grid; grid-template-columns:88px 1fr; gap:14px; background:var(--panel);
+  border:1px solid var(--line); border-radius:9px; padding:13px 15px;}
+.sfi-sprint .w{font-size:11px; letter-spacing:.09em; text-transform:uppercase; color:var(--accent); font-weight:800; padding-top:2px;}
+.sfi-sprint b{display:block; font-size:15px; margin-bottom:3px;}
+.sfi-sprint p{margin:0; font-size:13.5px; color:#c0c6c7;}
+@media(max-width:520px){.sfi-sprint{grid-template-columns:1fr; gap:4px;}}
+
+.sfi-doc pre code.language-mermaid, .sfi-doc .mermaid{background:transparent;}
+.sfi-sig{display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; margin:0 0 18px;}
+.sfi-sig div{background:var(--panel); border:1px solid var(--line); border-radius:9px; padding:13px 15px;}
+.sfi-sig b{display:block; font-size:15px;} .sfi-sig span{font-size:12.5px; color:var(--muted);}
+</style>
+
+<div class="sfi-doc">
+
+<div class="sfi-hero">
+  <p class="sfi-kicker">Capstone Proposal &middot; Design-Based Research</p>
+  <h1>SFI Foundation Web Modernization</h1>
+  <p>A storyboard for rebuilding how racers, inspectors, and buyers find safety specifications and verify that a certified part is actually certified — searchable in plain English, verifiable by QR code, usable on a phone in a hot pit lane.</p>
+</div>
+
+<div class="sfi-meta">
+  <div><div class="k">Nonprofit</div><div class="v">SFI Foundation, Inc.</div></div>
+  <div><div class="k">User group</div><div class="v">Manufacturers, race teams, inspectors, buyers</div></div>
+  <div><div class="k">Sub-issue owner</div><div class="v">Ishan Jha &mdash; Scrummer</div></div>
+  <div><div class="k">Technologists</div><div class="v">Vayun Shekar, Ishan Khandelwal</div></div>
+  <div><div class="k">Status</div><div class="v"><span class="b b-warn">Proposal &mdash; pre-build</span></div></div>
+  <div><div class="k">Prior art</div><div class="v"><a href="https://pages.opencodingsociety.com/capstone/greppers/">Greppers prototype</a></div></div>
+</div>
+
+<div class="sfi-toc">
+  <h4>Storyboard sections</h4>
+  <ol>
+    <li><a href="#s1">Why SFI Certification Matters</a></li>
+    <li><a href="#s2">Overview &amp; Learning Flow</a></li>
+    <li><a href="#s3">Case Studies (Activation)</a></li>
+    <li><a href="#s4">Spec Lookup Workshop (Demonstration)</a></li>
+    <li><a href="#s5">Practice: Fixing a Bad Lookup</a></li>
+    <li><a href="#s6">Tooling &amp; Ideation (Live Prototype)</a></li>
+    <li><a href="#s7">Small Groups &amp; Feedback (Application)</a></li>
+    <li><a href="#s8">Rubric &amp; Asset Capture</a></li>
+    <li><a href="#s9">Mastery &amp; Certification (Assessment)</a></li>
+    <li><a href="#s10">Summary &amp; Key Takeaways</a></li>
+  </ol>
+</div>
+
+<!-- ============ 1 ============ -->
+<section class="sfi-sec" id="s1">
+  <h2><span class="n">1</span> Why SFI Certification Matters</h2>
+  <p class="sfi-phase">The Hook</p>
+
+  <p>You have spent four months and most of your savings building a car. Race morning, tech inspection pulls you out of line: your harness is out of date and your fire suit's rating cannot be confirmed. You are not slow — you are <em>not allowed on track</em>. Somewhere in a binder is the spec that would have told you this in thirty seconds.</p>
+
+  <p>The <strong>SFI Foundation</strong> is a non-profit that writes and administers voluntary performance standards for motorsports equipment — helmets, harnesses, fire suits, head-and-neck restraints, bellhousings, flywheels. Manufacturers build to a spec, get tested, and earn the right to put an SFI label on the product. Sanctioning bodies then require those labels at the gate. The standards are the language the whole sport uses to talk about safety.</p>
+
+  <h3>The labels a user has to decode</h3>
+  <div class="sfi-grid">
+    <div class="sfi-card"><span class="tag">Spec number</span><h4>SFI 38.1</h4><p>Identifies <em>which</em> standard a product was built and tested against — here, head-and-neck restraint systems.</p></div>
+    <div class="sfi-card"><span class="tag">Rating suffix</span><h4>SFI 3.2A/5</h4><p>The number after the slash encodes a performance level. On driver suits it maps to thermal protective performance — a higher number means more seconds of protection.</p></div>
+    <div class="sfi-card"><span class="tag">Expiration</span><h4>Recertification date</h4><p>Several SFI-labelled products are only valid for a fixed window and must be re-certified. An in-date label and an expired label look nearly identical at a glance.</p></div>
+    <div class="sfi-card"><span class="tag">Provenance</span><h4>Is the label real?</h4><p>A printed patch is easy to copy. Nothing on the current site lets a buyer confirm that <em>this manufacturer</em> holds <em>that certification</em> right now.</p></div>
+  </div>
+
+  <div class="sfi-note"><b>Honesty note:</b> spec numbers and rating conventions on this page are used illustratively to storyboard the interface. The shipped product ingests the authoritative spec index published by SFI; no certification meaning is invented by our team.</div>
+
+  <h3>What is actually broken today</h3>
+  <table class="t">
+    <tr><th>Job the user is trying to do</th><th>What the site does now</th><th>Cost</th></tr>
+    <tr><td>"Which spec covers my fire suit?"</td><td>Requires already knowing the spec number; no plain-English search</td><td>Users guess, or call someone</td></tr>
+    <tr><td>"Is this seller's certification real?"</td><td>No verification path at all</td><td>Counterfeit and lapsed gear reaches racers</td></tr>
+    <tr><td>"Check this in the paddock, on my phone"</td><td>Desktop-era layout, pinch-and-zoom, slow search</td><td>Tech inspection slows to paper speed</td></tr>
+    <tr><td>"Browse what applies to my class"</td><td>Flat list of 140+ standards, no categories</td><td>Discovery is effectively impossible</td></tr>
+  </table>
+</section>
+
+<!-- ============ 2 ============ -->
+<section class="sfi-sec" id="s2">
+  <h2><span class="n">2</span> Overview &amp; Learning Flow</h2>
+  <p class="sfi-phase">Goal of the storyboard</p>
+
+  <p>This storyboard walks a user — and the build team — through one complete arc: from not knowing a spec exists, to finding it, to verifying a physical part against it, to being confident enough to sign off. Each section below maps to one stage of that arc, and each stage has a matching piece of software we are proposing to build.</p>
+
+<pre><code class="language-mermaid">flowchart LR
+  A["Activation&lt;br/&gt;Why it matters"] --> B["Demonstration&lt;br/&gt;Guided lookup"]
+  B --> C["Practice&lt;br/&gt;Fix a bad lookup"]
+  C --> D["Application&lt;br/&gt;Scan and verify"]
+  D --> E["Assessment&lt;br/&gt;Mastery check"]
+  E --> F["Integration&lt;br/&gt;Ship to staging"]
+</code></pre>
+
+  <h3>The three things we are building</h3>
+  <div class="sfi-grid">
+    <div class="sfi-card"><span class="tag">Feature 1</span><h4>ML-powered spec search</h4><p>Natural-language queries ("helmet cert for oval track") ranked semantically, with exact spec-number lookup and a keyword fallback when the ML service is slow or down.</p></div>
+    <div class="sfi-card"><span class="tag">Feature 2</span><h4>QR manufacturer verification</h4><p>In-browser camera scan of a certification QR, returning <b>Certified</b>, <b>Expired</b>, or <b>Not Found</b> in real time, with manual code entry as the fallback.</p></div>
+    <div class="sfi-card"><span class="tag">Feature 3</span><h4>Mobile-first redesign</h4><p>Search, Verify, and Browse as equal first-class entry points, built for 360&ndash;430px first and enhanced upward, with a baseline accessibility pass.</p></div>
+  </div>
+
+  <h3>How the pieces connect</h3>
+<pre><code class="language-mermaid">flowchart TD
+  U["Racer / inspector / buyer&lt;br/&gt;on a phone"] --> N{"Home: 3 entry points"}
+  N --> S["Search"]
+  N --> V["Verify"]
+  N --> B["Browse by category"]
+  S --> EMB["Semantic ranking service"]
+  EMB -.->|"unavailable or slow"| KW["Keyword fallback"]
+  EMB --> D["Spec detail page"]
+  KW --> D
+  B --> D
+  V --> CAM["Camera QR scan"]
+  CAM -.->|"permission denied"| MAN["Manual code entry"]
+  CAM --> LOOK["Certification lookup"]
+  MAN --> LOOK
+  LOOK --> R["Certified / Expired / Not Found"]
+  R --> D
+</code></pre>
+
+  <div class="sfi-note"><b>Design rule carried through every screen:</b> every ML or camera path has a non-ML, non-camera path behind it. A user is never stranded because a service was slow or a permission was denied.</div>
+</section>
+
+<!-- ============ 3 ============ -->
+<section class="sfi-sec" id="s3">
+  <h2><span class="n">3</span> Case Studies</h2>
+  <p class="sfi-phase">Activation &mdash; why the stakes are real</p>
+
+  <p>Before designing anything, the team studied why equipment standards exist at all. These are the cases we present to open the workshop.</p>
+
+  <div class="sfi-case">
+    <h4>Dale Earnhardt &mdash; 2001 Daytona 500 <span class="yr">&middot; 2001</span></h4>
+    <p>A last-lap crash that looked survivable killed one of the sport's most recognizable drivers. The investigation that followed pushed head-and-neck restraint devices from optional to mandatory across American motorsport, and the category of equipment now covered by <strong>SFI 38.1</strong> became standard equipment rather than a niche accessory.</p>
+    <span class="link">Discussion prompt: what changed faster — the technology, or the rule that required it?</span>
+  </div>
+
+  <div class="sfi-case">
+    <h4>The expired-harness problem <span class="yr">&middot; ongoing</span></h4>
+    <p>Driver restraint assemblies carry a recertification date. Webbing degrades with UV exposure, sweat, and load. A belt one week past its date and a belt one week inside it are visually indistinguishable, so enforcement depends entirely on someone reading a small printed tag correctly, under time pressure, in a tech line.</p>
+    <span class="link">Design implication: expiration must be a <em>first-class result state</em>, not a footnote on a detail page.</span>
+  </div>
+
+  <div class="sfi-case">
+    <h4>Counterfeit and misrepresented safety gear <span class="yr">&middot; ongoing</span></h4>
+    <p>Because an SFI label is a printed patch, online marketplaces make it trivial to sell gear that carries the mark without holding the certification. A buyer today has no self-service way to check a claim. This is the single clearest case for QR-based verification: move trust from the printed patch to a live lookup against the foundation's own records.</p>
+    <span class="link">Design implication: the QR payload must resolve to the foundation's data, not to a manufacturer-controlled page.</span>
+  </div>
+
+  <div class="sfi-case">
+    <h4>The Greppers prototype <span class="yr">&middot; prior capstone</span></h4>
+    <p>A previous Open Coding Society team built a Flask prototype for SFI covering 140+ standards, plain-English search, on-device photo identification, and role-based dashboards for drivers, inspectors, and staff. It proved demand for search and for role separation. It did not cover certification verification, and it was not built mobile-first — which is precisely the gap this sub-issue takes on.</p>
+    <span class="link">Reference: <a href="https://pages.opencodingsociety.com/capstone/greppers/">pages.opencodingsociety.com/capstone/greppers/</a></span>
+  </div>
+</section>
+
+<!-- ============ 4 ============ -->
+<section class="sfi-sec" id="s4">
+  <h2><span class="n">4</span> Spec Lookup Workshop</h2>
+  <p class="sfi-phase">Demonstration &mdash; the guided walkthrough</p>
+
+  <p>This is the instructor-facing part of the storyboard: how we demonstrate the tool live, what we say, and what we want the audience to notice.</p>
+
+  <h3>Guiding questions we open with</h3>
+  <ul>
+    <li>How would you find the right standard if you did <em>not</em> already know its number?</li>
+    <li>What would convince you that a part in your hands is genuinely certified?</li>
+    <li>What is the last thing you want to be doing on a phone in a hot pit lane?</li>
+  </ul>
+
+  <h3>Prototype assets to capture for the demo</h3>
+  <table class="t">
+    <tr><th>Asset</th><th>Format</th><th>Owner</th><th>Status</th></tr>
+    <tr><td>Seed spec dataset (number, title, category, description)</td><td>JSON</td><td>Vayun Shekar</td><td><span class="b b-warn">Sprint 1</span></td></tr>
+    <tr><td>Certification records covering all three verdicts</td><td>JSON / SQLite</td><td>Ishan Khandelwal</td><td><span class="b b-warn">Sprint 1</span></td></tr>
+    <tr><td>Printable demo QR codes (certified / expired / unknown)</td><td>PNG</td><td>Ishan Jha</td><td><span class="b b-warn">Sprint 2</span></td></tr>
+    <tr><td>Screen-recorded scan on a real phone</td><td>MP4</td><td>Ishan Jha</td><td><span class="b b-mute">Sprint 3</span></td></tr>
+    <tr><td>Architecture decision record</td><td>Markdown in repo</td><td>Ishan Jha</td><td><span class="b b-warn">Blocks build</span></td></tr>
+  </table>
+
+  <h3>Principles the demo must land</h3>
+  <ul class="sfi-check">
+    <li class="done">A user can reach an answer without knowing SFI's internal vocabulary.</li>
+    <li class="done">Every verdict states plainly what it means and what to do next.</li>
+    <li class="done">No screen requires horizontal scrolling at 360px.</li>
+    <li class="done">Nothing is a dead end: denied camera falls back to typing, failed ML falls back to keywords.</li>
+    <li class="done">No raw error text or blank screen is ever shown to a user.</li>
+  </ul>
+</section>
+
+<!-- ============ 5 ============ -->
+<section class="sfi-sec" id="s5">
+  <h2><span class="n">5</span> Practice: Fixing a Bad Lookup</h2>
+  <p class="sfi-phase">Practice &mdash; the retrofit method</p>
+
+  <p>Most bad lookups fail the same way: the user searches a product name, gets nothing, and gives up. Here is the four-step method the interface is designed to teach implicitly.</p>
+
+  <ol class="sfi-steps">
+    <li><b>Start from the object, not the number.</b><span>Describe the physical thing and the context: "fire suit for drag racing," not "3.2A." Semantic search is built to accept exactly this.</span></li>
+    <li><b>Narrow by category, not by guessing.</b><span>If the query is too broad, use the category filter as the second discovery path rather than retyping the query five times.</span></li>
+    <li><b>Read the rating suffix, not just the spec number.</b><span>Two products can both be "SFI 3.2A" and offer very different protection. The detail page surfaces the suffix at the top, not buried in body text.</span></li>
+    <li><b>Verify the part, not the claim.</b><span>A spec page proves the standard exists. Only a QR scan against the foundation's records proves <em>this manufacturer</em> holds it and it has not lapsed.</span></li>
+  </ol>
+
+  <h3>Worked example</h3>
+  <table class="t">
+    <tr><th></th><th>Before</th><th>After</th></tr>
+    <tr><td><b>Query</b></td><td><code>SFI</code></td><td><code>fire suit rating for drag racing</code></td></tr>
+    <tr><td><b>Result</b></td><td>140+ undifferentiated standards</td><td>Driver suit specs ranked first, with rating suffix explained inline</td></tr>
+    <tr><td><b>Next action</b></td><td>User leaves and phones a friend</td><td>User taps a result, then scans the suit's tag to confirm it is in date</td></tr>
+    <tr><td><b>Time</b></td><td>Unbounded</td><td>Target: under 30 seconds end to end</td></tr>
+  </table>
+</section>
+
+<!-- ============ 6 ============ -->
+<section class="sfi-sec" id="s6">
+  <h2><span class="n">6</span> Tooling &amp; Ideation</h2>
+  <p class="sfi-phase">Live prototype &mdash; try it in this page</p>
+
+  <p>Both tools below run entirely in this page against a small seed dataset. They are not the production system; they exist so the interaction model can be judged before a line of backend code is written. The ranking function here stands in for the embeddings service described in the ADR.</p>
+
+  <!-- TOOL A -->
+  <div class="sfi-tool">
+    <div class="bar">
+      <h4>Tool A &mdash; Plain-English Spec Search</h4>
+      <span class="b b-info" id="sfi-mode">semantic + keyword</span>
+    </div>
+    <label for="sfi-q">Describe what you are looking for, or type a spec number</label>
+    <input id="sfi-q" type="search" placeholder="e.g. head and neck restraint, or 38.1" autocomplete="off">
+    <div class="sfi-chips">
+      <button class="sfi-chip" data-q="fire suit rating for drag racing">fire suit rating for drag racing</button>
+      <button class="sfi-chip" data-q="head and neck restraint">head and neck restraint</button>
+      <button class="sfi-chip" data-q="16.5">16.5</button>
+      <button class="sfi-chip" data-q="seat belts that expire">seat belts that expire</button>
+    </div>
+    <div class="sfi-res" id="sfi-out"><p class="sfi-empty">Start typing &mdash; results rank as you go.</p></div>
+    <p style="font-size:12.5px;color:#8f9698;margin:12px 0 0">Fallback demo: turn off semantic ranking to see the keyword-only path a user gets when the ML service is unavailable. <button class="sfi-btn ghost" id="sfi-toggle" style="padding:5px 10px;font-size:12px;">Toggle fallback</button></p>
+  </div>
+
+  <!-- TOOL B -->
+  <div class="sfi-tool">
+    <div class="bar">
+      <h4>Tool B &mdash; QR Certification Verifier</h4>
+      <span class="b b-mute">manual-entry fallback path</span>
+    </div>
+    <p style="font-size:13.5px;color:#b9bfc0;margin:0 0 12px">On a phone this field is filled by the camera. Typing it by hand is the exact fallback shown when camera permission is denied &mdash; which is why it is a real, tested path and not an afterthought.</p>
+    <label for="sfi-code">Certification code</label>
+    <input id="sfi-code" type="text" placeholder="SFI:MFG-1042:PN-38A-7791" autocomplete="off" spellcheck="false">
+    <div class="sfi-chips">
+      <button class="sfi-chip" data-code="SFI:MFG-1042:PN-38A-7791">scan a certified part</button>
+      <button class="sfi-chip" data-code="SFI:MFG-2210:PN-165-3308">scan an expired part</button>
+      <button class="sfi-chip" data-code="SFI:MFG-9999:PN-000-0000">scan an unknown part</button>
+      <button class="sfi-chip" data-code="hello world">scan a malformed code</button>
+    </div>
+    <div style="margin-top:12px"><button class="sfi-btn" id="sfi-verify">Verify</button></div>
+    <div id="sfi-verdict"></div>
+  </div>
+
+  <h3>QR payload format</h3>
+  <table class="t">
+    <tr><th>Segment</th><th>Example</th><th>Meaning</th></tr>
+    <tr><td><code>SFI</code></td><td><code>SFI</code></td><td>Namespace prefix; anything else is rejected as malformed before a lookup is attempted</td></tr>
+    <tr><td><code>MFG-####</code></td><td><code>MFG-1042</code></td><td>Manufacturer identifier issued by the foundation</td></tr>
+    <tr><td><code>PN-###-####</code></td><td><code>PN-38A-7791</code></td><td>Part / certification identifier, scoped to that manufacturer</td></tr>
+  </table>
+  <div class="sfi-note"><b>Why this shape:</b> it is short enough to encode in a low-density QR that still scans on a scuffed label, it carries no personal data, and it is opaque — a scanned code proves nothing on its own until the foundation's records answer.</div>
+</section>
+
+<!-- ============ 7 ============ -->
+<section class="sfi-sec" id="s7">
+  <h2><span class="n">7</span> Small Groups &amp; Feedback</h2>
+  <p class="sfi-phase">Application &mdash; put it in users' hands</p>
+
+  <p>Groups of three, each given a phone and one of the three roles. Each group runs the same three tasks and records where they hesitate.</p>
+
+  <table class="t">
+    <tr><th>Role</th><th>Task</th><th>What we are watching for</th></tr>
+    <tr><td>Racer</td><td>"Find the standard that covers your fire suit and tell me its rating."</td><td>Do they search plain English, or hunt for a number?</td></tr>
+    <tr><td>Tech inspector</td><td>"Verify these three parts and sort them into pass / fail."</td><td>Is the expired verdict unmistakable at arm's length?</td></tr>
+    <tr><td>Buyer</td><td>"This seller says the part is SFI certified. Prove it."</td><td>Do they find Verify without being told it exists?</td></tr>
+  </table>
+
+  <h3>Deliberately flawed screen we show first</h3>
+  <div class="sfi-case" style="border-left-color:var(--bad)">
+    <h4>What a bad verification result looks like</h4>
+    <p><code>Error: lookup failed (500)</code> — nothing else on screen. No indication whether the part is bad, the network is down, or the code was mistyped. A user reads this as "the part is fine, the site is broken" and goes racing.</p>
+    <span class="link">Prompt to groups: rewrite this screen in one sentence a driver can act on.</span>
+  </div>
+
+  <h3>Speaker notes</h3>
+  <ul>
+    <li>Do not explain the interface before they use it. Hesitation is the data.</li>
+    <li>Record the first tap on the home screen for every participant — that tells us whether Search, Verify, and Browse really are equally weighted.</li>
+    <li>Ask each group for one thing they expected to exist and did not find.</li>
+  </ul>
+  <div class="sfi-note"><b>Feedback loop:</b> findings go straight into the Testing &amp; QA sub-issue as test cases, not into an unstructured notes document. Anything that stops a task cold is a build-blocking defect for this sub-issue, not a Testing finding.</div>
+</section>
+
+<!-- ============ 8 ============ -->
+<section class="sfi-sec" id="s8">
+  <h2><span class="n">8</span> Rubric &amp; Asset Capture</h2>
+  <p class="sfi-phase">Evidence &mdash; before, plan, after</p>
+
+  <p>Every core flow is captured in three phases so progress is provable rather than asserted.</p>
+
+  <table class="t">
+    <tr><th>Flow</th><th>Before (capture)</th><th>Action plan</th><th>After (capture)</th></tr>
+    <tr><td>Spec search</td><td>Screenshot of current site search for "fire suit"</td><td>Ingest dataset, build keyword search, layer semantic ranking with fallback</td><td>Screen recording: query to correct spec in under 30s</td></tr>
+    <tr><td>Verification</td><td>Screenshot proving no verification path exists</td><td>Define payload, seed records, build scan + lookup + three verdicts</td><td>Phone video of all three verdicts, plus denied-permission fallback</td></tr>
+    <tr><td>Mobile UI</td><td>360px screenshot showing horizontal scroll</td><td>Design system, mobile-first rebuild, breakpoint pass</td><td>360 / 768 / 1280px screenshots, zero horizontal scroll</td></tr>
+    <tr><td>Accessibility</td><td>Baseline contrast and focus-state audit</td><td>Fix contrast, add alt text, restore visible focus, semantic HTML</td><td>Post-fix audit with the failures listed and closed</td></tr>
+  </table>
+
+  <h3>Wireframes captured for the "after" column</h3>
+  <div class="sfi-phones">
+    <div class="sfi-phone">
+      <div class="notch"></div>
+      <div class="ph-search">Search specs&hellip;</div>
+      <div class="ph-card"><div class="t">SFI 38.1</div><div class="s">Head &amp; Neck Restraints</div></div>
+      <div class="ph-card"><div class="t">SFI 3.2A/5</div><div class="s">Driver Suits</div></div>
+      <div class="ph-card"><div class="t">SFI 16.5</div><div class="s">Restraint Assemblies</div></div>
+      <div class="ph-nav"><span class="on">Search</span><span>Verify</span><span>Browse</span></div>
+      <div class="cap">Search results</div>
+    </div>
+    <div class="sfi-phone">
+      <div class="notch"></div>
+      <div class="ph-frame">camera viewfinder</div>
+      <div class="ph-row w85"></div><div class="ph-row w45"></div>
+      <div class="ph-nav"><span>Search</span><span class="on">Verify</span><span>Browse</span></div>
+      <div class="cap">QR scan</div>
+    </div>
+    <div class="sfi-phone">
+      <div class="notch"></div>
+      <div class="ph-ok">CERTIFIED</div>
+      <div style="height:9px"></div>
+      <div class="ph-row w70"></div><div class="ph-row w85"></div><div class="ph-row w45"></div>
+      <div class="ph-nav"><span>Search</span><span class="on">Verify</span><span>Browse</span></div>
+      <div class="cap">Verdict</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 9 ============ -->
+<section class="sfi-sec" id="s9">
+  <h2><span class="n">9</span> Mastery &amp; Certification</h2>
+  <p class="sfi-phase">Assessment &mdash; the done condition</p>
+
+  <p>This sub-issue is not "done" when it looks finished. It is done when all five conditions below hold at once, verified on a real phone.</p>
+
+  <ol class="sfi-steps">
+    <li><b>All three features work end to end.</b><span>Semantic search with keyword fallback, QR verification with all three verdicts, mobile-first UI across every core flow.</span></li>
+    <li><b>CI passes on <code>main</code>.</b><span>Clean build on every push, no secrets in the repo, all environment-specific config behind environment variables.</span></li>
+    <li><b>A staging URL is live and shareable.</b><span>Reachable by the Testing &amp; QA and Deployment sub-issues without needing our machines.</span></li>
+    <li><b>A real user completes the arc on a real phone.</b><span>Search a spec, get a correct result, scan a code, get a real-time verdict, navigate every flow with no unhandled error.</span></li>
+    <li><b>The ADR and known limitations are committed.</b><span>Framework, hosting, and search provider documented <em>before</em> implementation; edge cases written up for handoff.</span></li>
+  </ol>
+
+  <h3>Sprint plan</h3>
+  <div class="sfi-sprints">
+    <div class="sfi-sprint"><div class="w">Sprint 1</div><div><b>Foundation</b><p>ADR committed, repo scaffolded with linting and a CI build check, design system and base layout components, spec dataset ingested and normalized.</p></div></div>
+    <div class="sfi-sprint"><div class="w">Sprint 2</div><div><b>Search</b><p>Keyword search, results list, spec detail page, category browse. Semantic layer integrated behind a feature flag with keyword fallback proven by forcing the service off.</p></div></div>
+    <div class="sfi-sprint"><div class="w">Sprint 3</div><div><b>Verify</b><p>QR payload finalized, certification records seeded for all three verdicts, camera scan flow with permission and error handling, manual-entry fallback, verdict screens.</p></div></div>
+    <div class="sfi-sprint"><div class="w">Sprint 4</div><div><b>Polish &amp; handoff</b><p>Responsive pass across breakpoints, accessibility pass, staging deploy, known-limitations document, handoff to Testing &amp; QA.</p></div></div>
+  </div>
+
+  <h3>Risks we are carrying</h3>
+  <table class="t">
+    <tr><th>Risk</th><th>Likelihood</th><th>Mitigation</th></tr>
+    <tr><td>Embeddings provider is slow, rate-limited, or costs money</td><td><span class="b b-warn">Medium</span></td><td>Keyword search ships first and is never removed; semantic ranking is an enhancement behind a flag with a hard timeout</td></tr>
+    <tr><td>Camera API blocked by browser, OS, or an insecure origin</td><td><span class="b b-warn">Medium</span></td><td>Manual code entry is a designed primary path, not an error state; staging served over HTTPS</td></tr>
+    <tr><td>Authoritative spec data is hard to obtain or license</td><td><span class="b b-bad">High</span></td><td>Build against clearly-labelled seed data with a documented ingestion boundary, so swapping in real data is a data task, not a rewrite</td></tr>
+    <tr><td>Scope creep from the parent issue into policy or standards</td><td><span class="b b-mute">Low</span></td><td>Explicitly out of scope; any such request routes back to the parent issue owner</td></tr>
+  </table>
+</section>
+
+<!-- ============ 10 ============ -->
+<section class="sfi-sec" id="s10">
+  <h2><span class="n">10</span> Summary &amp; Key Takeaways</h2>
+  <p class="sfi-phase">Integration</p>
+
+  <p><strong>Problem statement.</strong> Users need a fast and reliable way to search SFI safety specifications and verify manufacturer certifications on mobile devices, because the current experience is hard to navigate, slow to search, and not optimized for modern verification workflows.</p>
+
+  <p><strong>Success statement.</strong> We know this works when users can find the correct spec in seconds, scan a QR code to verify manufacturer certification in real time, and complete key tasks easily from a phone without support help.</p>
+
+  <h3>Scope boundaries</h3>
+  <div class="sfi-grid">
+    <div class="sfi-card"><span class="tag" style="color:var(--ok)">In scope</span><h4>This sub-issue builds</h4><p>Architecture decisions, the design system, ML spec search with fallback, QR verification with all error states, the mobile-first redesign, and a feature-complete staging deploy.</p></div>
+    <div class="sfi-card"><span class="tag" style="color:var(--bad)">Out of scope</span><h4>Owned elsewhere</h4><p>Formal test planning and bug triage (Testing &amp; QA sub-issue); production release, monitoring, and rollback (Deployment sub-issue); rewriting SFI standards or changing compliance policy (out of scope for the whole parent issue).</p></div>
+  </div>
+
+  <h3>Dependencies and handoffs</h3>
+  <ul>
+    <li><b>Blocks:</b> Testing &amp; QA cannot begin full test execution until this reaches a feature-complete staging build.</li>
+    <li><b>Blocks:</b> Deployment cannot promote to production until Testing &amp; QA signs off on this build.</li>
+    <li><b>Depends on:</b> nothing — this is the foundational build sub-issue.</li>
+  </ul>
+
+  <h3>Task breakdown</h3>
+  <ul class="sfi-check">
+    <li class="todo">Write and commit the architecture decision record (framework, hosting, search approach)</li>
+    <li class="todo">Scaffold the project (repo, linting, formatting, CI build check)</li>
+    <li class="todo">Build the shared design system and base layout components</li>
+    <li class="todo">Ingest and normalize the spec dataset</li>
+    <li class="todo">Build baseline keyword search: search bar, results list, spec detail page</li>
+    <li class="todo">Integrate the ML/semantic layer with keyword fallback</li>
+    <li class="todo">Add category filtering and the browse view</li>
+    <li class="todo">Define the QR payload format and seed certification test data</li>
+    <li class="todo">Build the QR scan flow: camera access, permissions, error states</li>
+    <li class="todo">Build certification lookup and the three verdict screens</li>
+    <li class="todo">Build the mobile-first home page and primary navigation</li>
+    <li class="todo">Implement responsive behavior across mobile, tablet, and desktop</li>
+    <li class="todo">Run and resolve the baseline accessibility pass</li>
+    <li class="todo">Deploy the feature-complete build to staging</li>
+    <li class="todo">Document known limitations and edge cases for Testing &amp; QA</li>
+  </ul>
+
+  <h3>Team approval</h3>
+  <div class="sfi-sig">
+    <div><b>&#10003; Ishan Jha</b><span>Scrummer &middot; owner of this sub-issue</span></div>
+    <div><b>&#10003; Vayun Shekar</b><span>Technologist 1</span></div>
+    <div><b>&#10003; Ishan Khandelwal</b><span>Technologist 2</span></div>
+  </div>
+
+  <div class="sfi-note"><b>The one-sentence version:</b> move trust from a printed patch to a live lookup, and make the whole thing work with one thumb.</div>
+</section>
+
+</div>
+
+<script>
+(function () {
+  // ---- Seed spec dataset (illustrative, for prototype only) ----
+  var SPECS = [
+    { no: "38.1",   title: "Head and Neck Restraint Systems", cat: "Driver Restraint",
+      desc: "Devices that limit head and neck movement in a frontal impact. Widely mandated across circle track, road racing, and drag racing.",
+      syn: "hans head neck restraint collar whiplash frontal impact tether helmet tether" },
+    { no: "3.2A/5", title: "Driver Suits - Thermal Protective Performance", cat: "Fire Protection",
+      desc: "Multi-layer driver suits. The suffix after the slash encodes the thermal protective performance level; a higher number means more seconds of protection.",
+      syn: "fire suit firesuit driving suit nomex burn flame thermal tpp drag racing coveralls" },
+    { no: "3.3",    title: "Driver Accessories - Gloves, Shoes, Underwear", cat: "Fire Protection",
+      desc: "Flame-resistant accessories worn with a driver suit, including gloves, shoes, socks, balaclavas, and underlayers.",
+      syn: "gloves shoes boots socks balaclava head sock underwear accessories fire" },
+    { no: "16.1",   title: "Driver Restraint Assemblies - 2 Year", cat: "Driver Restraint",
+      desc: "Harness assemblies on a two-year recertification cycle. Webbing degrades with UV, sweat, and load, so the label carries a date.",
+      syn: "seat belts belt harness five point six point webbing expire expiration date recertification buckle" },
+    { no: "16.5",   title: "Driver Restraint Assemblies - 5 Year", cat: "Driver Restraint",
+      desc: "Harness assemblies built to an extended five-year recertification cycle. Same function as 16.1 with a longer valid window.",
+      syn: "seat belts belt harness five year expire expiration date recertification long life webbing" },
+    { no: "45.1",   title: "Head Surrounds", cat: "Cockpit Safety",
+      desc: "Energy-absorbing head surrounds fitted around the driver's head to manage lateral impact loads.",
+      syn: "head surround seat headrest lateral side impact foam cockpit padding" },
+    { no: "27.1",   title: "Roll Cage Padding", cat: "Cockpit Safety",
+      desc: "Impact-absorbing padding applied to roll cage tubing in areas a driver's helmet can contact.",
+      syn: "roll bar cage padding tube foam helmet contact interior" },
+    { no: "6.1",    title: "Automotive Bellhousings", cat: "Driveline Containment",
+      desc: "Containment bellhousings intended to retain clutch and flywheel fragments in the event of a failure.",
+      syn: "bellhousing bell housing clutch containment explosion driveline transmission scattershield" },
+    { no: "1.1",    title: "Flywheel and Clutch Assemblies", cat: "Driveline Containment",
+      desc: "Flywheel and clutch assemblies certified for rotational integrity under racing loads.",
+      syn: "flywheel clutch assembly rotating burst driveline" },
+    { no: "28.1",   title: "Fuel Cells", cat: "Fuel Systems",
+      desc: "Fuel containment bladders and cells designed to resist rupture and limit spillage in a crash.",
+      syn: "fuel cell tank bladder gas gasoline rupture fire containment" },
+    { no: "17.1",   title: "Roll Cage / Chassis Structures", cat: "Chassis",
+      desc: "Structural requirements for roll cages and chassis assemblies used in certified competition vehicles.",
+      syn: "roll cage chassis tubing frame structure certification" },
+    { no: "31.1",   title: "Racing Helmets", cat: "Head Protection",
+      desc: "Helmet shell and retention requirements for competition use, including impact and penetration criteria.",
+      syn: "helmet head protection shell visor shield oval track circle track road racing impact penetration" }
+  ];
+
+  var SEMANTIC = true;
+  var qEl = document.getElementById("sfi-q");
+  var outEl = document.getElementById("sfi-out");
+  var modeEl = document.getElementById("sfi-mode");
+
+  var STOP = { "a":1,"an":1,"the":1,"for":1,"of":1,"and":1,"or":1,"to":1,"in":1,"on":1,
+               "my":1,"is":1,"are":1,"that":1,"with":1,"what":1,"which":1,"sfi":1 };
+
+  function norm(s) {
+    return (s || "").toLowerCase().replace(/[^a-z0-9./ ]/g, " ").split(/\s+/)
+      .filter(function (t) { return t && !STOP[t]; });
+  }
+
+  function score(spec, terms, semantic) {
+    var s = 0;
+    var no = spec.no.toLowerCase();
+    var title = spec.title.toLowerCase();
+    var cat = spec.cat.toLowerCase();
+    var body = (spec.desc + " " + spec.syn).toLowerCase();
+    for (var i = 0; i < terms.length; i++) {
+      var t = terms[i];
+      if (no === t || no.indexOf(t) === 0) s += 100;       // exact spec-number lookup
+      if (title.indexOf(t) >= 0) s += 12;
+      if (cat.indexOf(t) >= 0) s += 8;
+      if (semantic) {
+        // stands in for embedding similarity: synonym + description matching
+        if (body.indexOf(t) >= 0) s += 6;
+        if (t.length > 4 && body.indexOf(t.slice(0, t.length - 1)) >= 0) s += 2; // crude stem
+      }
+    }
+    return s;
+  }
+
+  function render() {
+    var raw = qEl.value.trim();
+    if (!raw) {
+      outEl.innerHTML = '<p class="sfi-empty">Start typing &mdash; results rank as you go.</p>';
+      return;
+    }
+    var terms = norm(raw);
+    var hits = SPECS.map(function (sp) { return { sp: sp, s: score(sp, terms, SEMANTIC) }; })
+                    .filter(function (h) { return h.s > 0; })
+                    .sort(function (a, b) { return b.s - a.s; })
+                    .slice(0, 5);
+
+    if (!hits.length) {
+      outEl.innerHTML = '<p class="sfi-empty">No match. Try describing the part instead of naming the brand &mdash; for example &ldquo;belts that expire&rdquo;.</p>';
+      return;
+    }
+    var html = hits.map(function (h) {
+      return '<div class="sfi-hit"><span class="no">SFI ' + h.sp.no + '</span>' +
+             '<h5>' + h.sp.title + '</h5>' +
+             '<p>' + h.sp.desc + '</p>' +
+             '<p style="margin-top:6px"><span class="b b-mute">' + h.sp.cat + '</span>' +
+             '<span class="b b-info">relevance ' + h.s + '</span></p></div>';
+    }).join("");
+    if (!SEMANTIC) {
+      html = '<p style="font-size:13px;color:#FBBF24;margin:0 0 10px">&#9888; Semantic ranking unavailable &mdash; showing keyword results. This is the degraded path, not an error screen.</p>' + html;
+    }
+    outEl.innerHTML = html;
+  }
+
+  qEl.addEventListener("input", render);
+  document.getElementById("sfi-toggle").addEventListener("click", function () {
+    SEMANTIC = !SEMANTIC;
+    modeEl.textContent = SEMANTIC ? "semantic + keyword" : "keyword fallback only";
+    modeEl.className = SEMANTIC ? "b b-info" : "b b-warn";
+    render();
+  });
+  Array.prototype.forEach.call(document.querySelectorAll(".sfi-chip[data-q]"), function (b) {
+    b.addEventListener("click", function () { qEl.value = b.getAttribute("data-q"); render(); qEl.focus(); });
+  });
+
+  // ---- Tool B: certification verification ----
+  var RECORDS = {
+    "SFI:MFG-1042:PN-38A-7791": { status: "CERTIFIED", mfg: "Apex Restraint Systems", part: "Head and Neck Restraint, Model A", spec: "38.1", issued: "2024-03-11", expires: "2029-03-11" },
+    "SFI:MFG-1042:PN-32A-5510": { status: "CERTIFIED", mfg: "Apex Restraint Systems", part: "Driver Suit, 3-layer", spec: "3.2A/5", issued: "2025-01-20", expires: "2030-01-20" },
+    "SFI:MFG-2210:PN-165-3308": { status: "EXPIRED",   mfg: "Northline Safety Co.", part: "5-point Harness Assembly", spec: "16.5", issued: "2019-06-02", expires: "2024-06-02" },
+    "SFI:MFG-2210:PN-161-1140": { status: "EXPIRED",   mfg: "Northline Safety Co.", part: "6-point Harness Assembly", spec: "16.1", issued: "2022-04-15", expires: "2024-04-15" }
+  };
+
+  var codeEl = document.getElementById("sfi-code");
+  var verdictEl = document.getElementById("sfi-verdict");
+
+  function box(cls, title, body) {
+    verdictEl.innerHTML = '<div class="sfi-verdict ' + cls + '"><h4>' + title + '</h4><p>' + body + '</p></div>';
+  }
+
+  function verify() {
+    var code = codeEl.value.trim().toUpperCase();
+    if (!code) {
+      box("v-warn", "Nothing to check", "Scan a code, or type one in. The format is <code>SFI:MFG-####:PN-###-####</code>.");
+      return;
+    }
+    if (!/^SFI:MFG-\d{4}:PN-[A-Z0-9]{3}-\d{4}$/.test(code)) {
+      box("v-warn", "That code is not readable",
+        "This does not look like an SFI certification code, so no lookup was attempted. If you scanned a label, try again in better light &mdash; or type the code printed under the QR square.");
+      return;
+    }
+    var rec = RECORDS[code];
+    if (!rec) {
+      box("v-bad", "Not found",
+        "No certification exists in SFI records for this code. Do not treat this part as certified. If the seller insists it is, ask them for the manufacturer ID on the label and report the listing.");
+      return;
+    }
+    if (rec.status === "EXPIRED") {
+      box("v-warn", "Expired",
+        "<b>" + rec.part + "</b> from <b>" + rec.mfg + "</b> was certified to SFI " + rec.spec +
+        ", but that certification expired on <b>" + rec.expires + "</b>. It is not valid for competition and must be re-certified or replaced.");
+      return;
+    }
+    box("v-ok", "Certified",
+      "<b>" + rec.part + "</b> from <b>" + rec.mfg + "</b> is certified to SFI " + rec.spec +
+      ". Issued " + rec.issued + ", valid through <b>" + rec.expires + "</b>.");
+  }
+
+  document.getElementById("sfi-verify").addEventListener("click", verify);
+  codeEl.addEventListener("keydown", function (e) { if (e.key === "Enter") verify(); });
+  Array.prototype.forEach.call(document.querySelectorAll(".sfi-chip[data-code]"), function (b) {
+    b.addEventListener("click", function () { codeEl.value = b.getAttribute("data-code"); verify(); });
+  });
+})();
+</script>
